@@ -54,8 +54,1122 @@
 
     <script>
         // The quiz data from the provided JSON
-        const quizData = {"Lk":[{"gua":0,"question":"During patient registration, which of the following is the most critical piece of information to verify for accurate billing?","hint":"Think about what information directly affects the financial side of the patient visit.","wA":[{"text":"The patient's preferred contact method.","Zo":false,"OQa":"While a patient's contact information is important, it's not the most critical piece of information for accurate billing."},{"text":"The patient's insurance policy number and effective date.","Zo":true,"OQa":"Verifying the insurance policy number and its effective date is crucial for ensuring that the patient's services are covered and for accurate claims submission."},{"text":"The patient's emergency contact information.","Zo":false,"OQa":"Emergency contact information is important for patient safety, but it does not directly impact the billing process."},{"text":"The patient's date of birth and social security number.","Zo":false,"OQa":"While both of these are important for identification, the insurance details are the primary information needed for billing purposes."}]},{"gua":0,"question":"Which of the following is a primary purpose of clinical charting in an EHR?","hint":"Consider the most important legal and medical function of patient records.","wA":[{"text":"To create a record of patient visits for the front desk staff.","Zo":false,"OQa":"The purpose of clinical charting is to document patient care for medical and legal purposes, not for administrative convenience."},{"text":"To provide a financial record for billing and coding purposes.","Zo":false,"OQa":"While clinical charts are used for billing and coding, their primary purpose is to document the patient's clinical history and care."},{"text":"To serve as a legal document of the patient's medical history and treatment plan.","Zo":true,"OQa":"Clinical charts are a legal document that provides a comprehensive record of the patient's medical history, diagnoses, and treatment plan."},{"text":"To track a patient's exercise and dietary habits.","Zo":false,"OQa":"Although a chart may contain this information, it is not the primary purpose of clinical charting."}]},{"gua":0,"question":"What does the abbreviation 'CPT' stand for in the context of medical coding?","hint":"This abbreviation relates to the codes for services and procedures performed by a physician.","wA":[{"text":"Certified Patient Technician","Zo":false,"OQa":"'CPT' stands for Current Procedural Terminology, not a type of technician."},{"text":"Current Patient Treatment","Zo":false,"OQa":"'CPT' stands for Current Procedural Terminology, not patient treatment."},{"text":"Current Procedural Terminology","Zo":true,"OQa":"CPT codes are a set of codes used to describe medical, surgical, and diagnostic services provided by physicians and other healthcare professionals."},{"text":"Clinical Protocol Terminology","Zo":false,"OQa":"'CPT' stands for Current Procedural Terminology, not clinical protocol."}]},{"gua":0,"question":"Which of the following is a key administrative task handled by the front office staff?","hint":"Think about the tasks that are not directly related to a patient's medical care but are essential for running the office.","wA":[{"text":"Performing diagnostic tests.","Zo":false,"OQa":"Diagnostic tests are clinical tasks typically performed by nurses or technicians."},{"text":"Developing a patient's treatment plan.","Zo":false,"OQa":"Treatment plans are developed by the physician, not the administrative staff."},{"text":"Scheduling patient appointments and managing the flow of the clinic.","Zo":true,"OQa":"Scheduling appointments and managing the flow of the clinic are core administrative responsibilities of the front office staff."},{"text":"Prescribing medications.","Zo":false,"OQa":"Prescribing medications is a clinical task performed by a physician."}]},{"gua":0,"question":"According to HIPAA, which of the following is considered a 'covered entity'?","hint":"Think about what type of organization is legally responsible for protecting patient health information.","wA":[{"text":"A patient's family member.","Zo":false,"OQa":"A patient's family member is not considered a 'covered entity' under HIPAA."},{"text":"A public library.","Zo":false,"OQa":"A public library is not considered a 'covered entity' under HIPAA unless it is directly involved in a healthcare-related activity."},{"text":"A healthcare provider, such as a doctor's office or clinic.","Zo":true,"OQa":"A healthcare provider is considered a 'covered entity' under HIPAA because they handle protected health information (PHI)."},{"text":"A non-medical retail store.","Zo":false,"OQa":"A non-medical retail store is not a 'covered entity' under HIPAA."}]},{"gua":0,"question":"What is the primary role of a medical biller?","hint":"Focus on the financial aspect of the medical office's workflow.","wA":[{"text":"To perform clinical examinations on patients.","Zo":false,"OQa":"Clinical examinations are performed by physicians or other licensed healthcare professionals."},{"text":"To assign diagnostic and procedural codes to patient encounters.","Zo":false,"OQa":"Assigning codes is the primary role of a medical coder, though billers often have coding knowledge."},{"text":"To process and submit claims to insurance companies for reimbursement.","Zo":true,"OQa":"The primary role of a medical biller is to handle the financial side of healthcare by processing and submitting claims to insurance companies."},{"text":"To schedule appointments and manage the front desk.","Zo":false,"OQa":"Scheduling appointments is an administrative task performed by front office staff."}]},{"gua":0,"question":"Which of the following is a common task performed when scheduling a new patient appointment?","hint":"Think about the basic information needed to create a patient's record in the system.","wA":[{"text":"Drawing blood for lab work.","Zo":false,"OQa":"Drawing blood is a clinical procedure performed by a phlebotomist or nurse, not a scheduling task."},{"text":"Providing the patient with the physician's personal cell phone number.","Zo":false,"OQa":"A physician's personal contact information is not typically provided during scheduling."},{"text":"Collecting the patient's demographic information, such as full name and address.","Zo":true,"OQa":"Collecting demographic information is a standard and necessary step when scheduling a new patient to create a record in the system."},{"text":"Giving the patient a full medical diagnosis.","Zo":false,"OQa":"Only a physician can provide a medical diagnosis."}]},{"gua":0,"question":"What is the correct term for the part of a medical record that documents a patient's current symptoms and complaints?","hint":"The term for this section is a synonym for 'personally-reported' or 'non-measurable.'","wA":[{"text":"Assessment","Zo":false,"OQa":"The assessment is the physician's diagnosis based on the symptoms, not the symptoms themselves."},{"text":"Plan","Zo":false,"OQa":"The plan outlines the physician's next steps, not the patient's symptoms."},{"text":"Objective","Zo":false,"OQa":"Objective information includes measurable data like blood pressure, not the patient's subjective complaints."},{"text":"Subjective","Zo":true,"OQa":"Subjective information refers to the patient's personal, non-measurable reports, such as symptoms and complaints."}]},{"gua":0,"question":"Which of the following would be an example of a HIPAA violation?","hint":"Think about which action would involve unauthorized disclosure of protected health information (PHI).","wA":[{"text":"A nurse discusses a patient's diagnosis with a colleague who is also involved in the patient's care.","Zo":false,"OQa":"Discussing a patient's case with other healthcare professionals who are directly involved in their care is not a HIPAA violation under the 'need to know' principle."},{"text":"A receptionist posts a photo of a patient's medical chart on social media.","Zo":true,"OQa":"Sharing any patient information, especially on a public platform like social media, is a clear violation of HIPAA rules regarding the protection of protected health information (PHI)."},{"text":"A patient requests and receives a copy of their own medical records.","Zo":false,"OQa":"Patients have a right under HIPAA to access their own medical records."},{"text":"A doctor uses a patient's name and age for a case study with their permission.","Zo":false,"OQa":"Sharing patient information with their explicit permission and for a professional purpose is not a HIPAA violation."}]},{"gua":0,"question":"The term 'remittance advice' in billing refers to:","hint":"This term is related to the communication between a provider and an insurance company after a claim has been processed.","wA":[{"text":"An automated system for sending appointment reminders to patients.","Zo":false,"OQa":"A remittance advice is not an appointment reminder system; it is a document that explains the payment of a claim."},{"text":"A document from an insurance company that explains what they paid on a claim and why.","Zo":true,"OQa":"A remittance advice (or RA) is a document from an insurer that provides detailed information about a claim's payment, rejection, or denial, and is essential for medical billing."},{"text":"A referral form from a primary care physician to a specialist.","Zo":false,"OQa":"A remittance advice is not a referral form; that is a separate document."},{"text":"A patient statement showing the total amount they owe after insurance has paid.","Zo":false,"OQa":"A patient statement shows the patient's financial responsibility, while a remittance advice is for the provider and explains the insurer's payment."}]},{"gua":0,"question":"What is the main purpose of prior authorization in the medical billing process?","hint":"Think about why an insurance company would need to approve a procedure beforehand.","wA":[{"text":"To track the number of referrals sent to specialists.","Zo":false,"OQa":"Prior authorization is not primarily for tracking referrals; it is for pre-approving medical necessity."},{"text":"To ensure the patient has an active insurance policy.","Zo":false,"OQa":"Verifying active insurance is part of patient registration, not prior authorization."},{"text":"To get pre-approval from the insurance company for a medical service or procedure.","Zo":true,"OQa":"Prior authorization is the process of obtaining a pre-approval from the patient's insurance company before a service or procedure is performed to ensure it will be covered."},{"text":"To determine a patient's copay and deductible for a visit.","Zo":false,"OQa":"Copay and deductible amounts are part of the insurance plan details, not the prior authorization process."}]},{"gua":0,"question":"What is the best practice for handling a 'no-show' patient appointment?","hint":"Consider what steps are important for both billing and patient care.","wA":[{"text":"Remove the appointment from the schedule without any documentation.","Zo":false,"OQa":"It is crucial to document a 'no-show' to maintain an accurate patient record and for billing purposes if a no-show fee is applied."},{"text":"Document the no-show in the patient's chart and consider a no-show fee if the policy allows.","Zo":true,"OQa":"Properly documenting a no-show in the patient's chart and applying a no-show fee (if the clinic's policy permits) are essential administrative tasks."},{"text":"Reschedule the patient for the same day.","Zo":false,"OQa":"While rescheduling is a goal, the best practice is to first document the no-show and then contact the patient to reschedule."},{"text":"Send a bill to the patient for the full cost of the visit.","Zo":false,"OQa":"Sending a bill for the full cost is not standard practice; a no-show fee is typically a much smaller amount."}]},{"gua":0,"question":"In medical billing, what does 'A/R aging' refer to?","hint":"A/R stands for Accounts Receivable. Think about what 'aging' means in this context.","wA":[{"text":"The process of a patient becoming older.","Zo":false,"OQa":"'A/R aging' is a financial term and has nothing to do with the patient's age."},{"text":"To analyze which services are most profitable for the clinic.","Zo":false,"OQa":"A financial profitability report would be used to analyze profitable services."},{"text":"To identify which outstanding claims are the oldest and need the most urgent follow-up.","Zo":true,"OQa":"The A/R aging report organizes claims by how long they have been outstanding, helping staff prioritize follow-up on older claims."},{"text":"To determine the age of a medical record for archiving purposes.","Zo":false,"OQa":"This report is a financial tool for billing and collections, not for record management."}]},{"gua":0,"question":"A patient needs to see a specialist for a skin condition. What is the key role of the front office staff in managing this referral?","hint":"What is the most important step to make sure the specialist visit is covered by insurance?","wA":[{"text":"Performing a preliminary skin examination.","Zo":false,"OQa":"Only a qualified clinician can perform a skin examination."},{"text":"Confirming with the specialist's office that they accept the patient's insurance and verifying a referral is needed.","Zo":true,"OQa":"Verifying insurance and a referral is the most critical administrative step to ensure the patient's visit is covered and prevent denial."},{"text":"Telling the patient to find a specialist on their own.","Zo":false,"OQa":"Assisting with the referral process is a core administrative task."},{"text":"Diagnosing the patient's skin condition.","Zo":false,"OQa":"Diagnosis is the responsibility of the physician, not the administrative staff."}]},{"gua":0,"question":"What does the medical term 'nephrectomy' mean?","hint":"Look at the root and suffix of the word. 'Nephr' refers to a specific organ, and '-ectomy' means removal.","wA":[{"text":"Surgical repair of a nerve.","Zo":false,"OQa":"'Nephr-' refers to the kidney, and 'neur-' refers to a nerve."},{"text":"Excision (removal) of a kidney.","Zo":true,"OQa":"'Nephr-' is the root word for kidney, and '-ectomy' is the suffix for surgical removal."},{"text":"Surgical repair of the heart.","Zo":false,"OQa":"'Cardi-' refers to the heart."},{"text":"Inflammation of the liver.","Zo":false,"OQa":"'Hepat-' refers to the liver, and '-itis' means inflammation."}]},{"gua":0,"question":"In a SOAP note, what type of information is documented under the 'O' section?","hint":"'S' is for subjective, 'A' is for assessment, and 'P' is for plan. What is the 'O' for?","wA":[{"text":"The physician's diagnosis.","Zo":false,"OQa":"This is the 'A' (Assessment) part of the SOAP note."},{"text":"The patient's reported symptoms.","Zo":false,"OQa":"This is the 'S' (Subjective) part of the SOAP note."},{"text":"Objective findings from the examination.","Zo":true,"OQa":"The 'O' in SOAP stands for Objective, which includes measurable data such as blood pressure, temperature, lab results, and findings from the physical exam."},{"text":"The plan for the patient's treatment.","Zo":false,"OQa":"This is the 'P' (Plan) part of the SOAP note."}]},{"gua":0,"question":"A patient calls and asks for their spouse's test results. What is the correct action to take, according to HIPAA?","hint":"Consider who is authorized to receive protected health information.","wA":[{"text":"Provide the information, as they are a family member.","Zo":false,"OQa":"You cannot provide information to a family member without the patient's explicit written consent, unless the patient has specified this verbally."},{"text":"Refuse to provide the information unless you have a signed release from the patient.","Zo":true,"OQa":"HIPAA requires a signed release or explicit verbal consent from the patient before disclosing any protected health information (PHI) to anyone, including family members."},{"text":"Transfer the call to the physician.","Zo":false,"OQa":"Transferring the call is not a solution, as the physician also cannot disclose the information without consent."},{"text":"Ask the patient to call back later.","Zo":false,"OQa":"This is an inappropriate response and does not address the HIPAA regulations."}]},{"gua":0,"question":"What is a 'clean claim' in medical billing?","hint":"Think about a claim that is free of errors and ready to be processed.","wA":[{"text":"A claim submitted to an insurance company that is missing a patient signature.","Zo":false,"OQa":"A clean claim is a claim that is free of errors and is submitted to the insurance company with all the necessary information."},{"text":"A claim that has been approved for payment without any errors.","Zo":true,"OQa":"A clean claim is a claim that has been approved for payment without any errors, which means it will be processed and paid without any issues."},{"text":"A claim that has been denied by the insurance company.","Zo":false,"OQa":"A claim that has been denied is not a clean claim, as it has errors that prevent it from being processed."},{"text":"A claim that has been paid in full by the patient.","Zo":false,"OQa":"A clean claim is a term used for claims submitted to insurance companies, not a term for patient payments."}]},{"gua":0,"question":"The medical term prefix 'tachy-' refers to what?","hint":"This prefix is often used to describe a rapid heart rate.","wA":[{"text":"Slow","Zo":false,"OQa":"The prefix for slow is 'brady-."},{"text":"Difficult or painful","Zo":false,"OQa":"The prefix for difficult or painful is 'dys-."},{"text":"Fast or rapid","Zo":true,"OQa":"The prefix 'tachy-' is used to describe something that is fast or rapid, such as in the word 'tachycardia' (a rapid heart rate)."},{"text":"Below or deficient","Zo":false,"OQa":"The prefix for below or deficient is 'hypo-."}]},{"gua":0,"question":"What is the purpose of an 'audit trail' in an EHR?","hint":"Think about how the system keeps a record of who did what and when.","wA":[{"text":"To track patient's physical movements within the clinic.","Zo":false,"OQa":"An audit trail tracks electronic access and changes, not physical movements."},{"text":"To create a list of all patients that have been seen in a day.","Zo":false,"OQa":"A patient log or day sheet would be used to create a list of patients seen in a day."},{"text":"To record all electronic activity in a patient's record, including who accessed it, when, and what changes were made.","Zo":true,"OQa":"An audit trail is a chronological log that records all user activity, ensuring accountability and compliance with regulatory standards like HIPAA."},{"text":"To send automated reminders to patients about upcoming appointments.","Zo":false,"OQa":"Appointment reminders are typically a scheduling function, not an audit trail."}]},{"gua":0,"question":"The denial reason 'CO 45' on a remittance advice indicates which of the following?","hint":"The 'CO' in this code stands for 'Contractual Obligation'.","wA":[{"text":"The patient's deductible has not been met.","Zo":false,"OQa":"'CO 45' indicates that the charge has exceeded the contracted provider fee schedule amount and is a contractual obligation."},{"text":"The charge is not covered by the patient's benefit plan.","Zo":false,"OQa":"This is a common reason for a denial, but the code 'CO 45' specifically refers to contractual obligations."},{"text":"The charge exceeds the contracted provider fee schedule amount.","Zo":true,"OQa":"The 'CO' stands for contractual obligation, and the code '45' indicates that the charge exceeds the allowed amount based on the provider's contract with the payer."},{"text":"The claim was submitted to the wrong insurance company.","Zo":false,"OQa":"This would be a denial for a different reason, not code 45."}]},{"gua":0,"question":"What is the recommended first step when you receive a claim denial from an insurance payer?","hint":"Before you can fix the problem, you must understand what the problem is.","wA":[{"text":"Immediately write off the balance as uncollectible.","Zo":false,"OQa":"Writing off the balance should be a last resort, as the claim may be recoverable."},{"text":"Send a bill for the full amount to the patient.","Zo":false,"OQa":"You should not bill the patient for the full amount until you have fully managed the denial and confirmed patient responsibility."},{"text":"Identify the denial reason and correct any errors found.","Zo":true,"OQa":"The first step in denial management is to understand why the claim was denied, which allows you to correct the issue and resubmit it."},{"text":"Call the patient to inform them of the denial.","Zo":false,"OQa":"While the patient may need to be informed eventually, the first step is to identify and resolve the issue on the provider side."}]},{"gua":0,"question":"The 'Accounts Receivable (A/R) aging report' in a medical office is used for what purpose?","hint":"This report helps the billing staff understand which unpaid claims have been sitting for the longest time.","wA":[{"text":"To track the age of each patient in the practice.","Zo":false,"OQa":"This report is for tracking the age of unpaid claims, not the age of patients."},{"text":"To analyze which services are most profitable for the clinic.","Zo":false,"OQa":"A financial profitability report would be used to analyze profitable services."},{"text":"To identify which outstanding claims are the oldest and need the most urgent follow-up.","Zo":true,"OQa":"The A/R aging report organizes claims by how long they have been outstanding, allowing the office to prioritize collection efforts."},{"text":"To determine the age of a medical record for archiving purposes.","Zo":false,"OQa":"This report is a financial tool for billing and collections, not for record management."}]},{"gua":0,"question":"When a patient's insurance plan requires a 'co-insurance', what does this mean?","hint":"This payment arrangement is a form of cost-sharing with your insurance company.","wA":[{"text":"The patient must pay a fixed fee for each service after the deductible is met.","Zo":false,"OQa":"A fixed fee after a deductible is typically a copay."},{"text":"The insurance company will not pay anything until the patient's out-of-pocket maximum is reached.","Zo":false,"OQa":"The patient is still responsible for copays and deductibles, even if their out-of-pocket maximum is not reached."},{"text":"The patient and insurance company will share the cost of a service based on a predetermined percentage.","Zo":true,"OQa":"Coinsurance is the patient's share of the cost for a covered service, calculated as a percentage after the deductible is met."},{"text":"The patient must pay for a portion of the service upfront as a deposit.","Zo":false,"OQa":"An upfront deposit is not the definition of coinsurance."}]},{"gua":0,"question":"What is the key purpose of an e-prescribing (e-Rx) function in an EHR system?","hint":"Think about how a doctor can send a patient's prescription to the pharmacy in a fast, secure, and error-free way.","wA":[{"text":"To send a referral to a specialist's office.","Zo":false,"OQa":"E-prescribing is specifically for prescriptions, not for sending referrals."},{"text":"To send patient records to a hospital.","Zo":false,"OQa":"Electronic records are shared between providers, but this is a broader EHR function, not e-prescribing."},{"text":"To electronically submit prescriptions directly to a pharmacy, reducing errors and saving time.","Zo":true,"OQa":"E-prescribing allows physicians to send prescriptions directly to a patient's pharmacy, which helps reduce errors, improves safety, and streamlines the process."},{"text":"To process and manage patient payments.","Zo":false,"OQa":"Processing payments is handled by the billing and finance departments."}]},{"gua":0,"question":"What is the primary purpose of a 'UB-04' claim form?","hint":"This form is used for hospital and inpatient services.","wA":[{"text":"To bill for services from a physician's office.","Zo":false,"OQa":"The CMS-1500 is used for physician services."},{"text":"To submit a patient's medical history to an insurance company.","Zo":false,"OQa":"The UB-04 is a billing document, not a comprehensive medical history."},{"text":"To bill for institutional services, such as hospital stays and outpatient care.","Zo":true,"OQa":"The UB-04, also known as the CMS-1450, is the standard claim form used by institutional providers like hospitals, clinics, and skilled nursing facilities."},{"text":"To obtain prior authorization for a medical procedure.","Zo":false,"OQa":"Prior authorization is a separate process from claim submission."}]},{"gua":0,"question":"Which claim form would a private physician's office use to bill an insurance company for an office visit?","hint":"This form is for professional services.","wA":[{"text":"CMS-1500","Zo":true,"OQa":"The CMS-1500 is the standard form used by non-institutional providers, such as private physician practices, to bill for professional services."},{"text":"UB-04","Zo":false,"OQa":"The UB-04 is used for institutional billing, such as by hospitals."},{"text":"CMS-1450","Zo":false,"OQa":"The CMS-1450 is another name for the UB-04, used for institutional billing."},{"text":"A patient's superbill","Zo":false,"OQa":"A superbill is a pre-printed form used by a provider to document services rendered, but the CMS-1500 is the official claim form sent to the payer."}]},{"gua":0,"question":"What is the meaning of the medical term 'hypoglycemia'?","hint":"Break the word down: 'hypo-' + 'glyc' + '-emia'.","wA":[{"text":"High blood pressure","Zo":false,"OQa":"High blood pressure is 'hypertension'."},{"text":"Low blood sugar","Zo":true,"OQa":"'Hypo-' means low, 'glyc' refers to sugar (glucose), and '-emia' relates to the blood. So, 'hypoglycemia' is low blood sugar."},{"text":"Inflammation of the liver","Zo":false,"OQa":"Inflammation of the liver is 'hepatitis'."},{"text":"Surgical removal of the stomach","Zo":false,"OQa":"Surgical removal of the stomach is 'gastrectomy'."}]},{"gua":0,"question":"Which part of a patient's record documents measurable data, such as blood pressure and lab results?","hint":"Think about the 'O' in a SOAP note.","wA":[{"text":"Subjective","Zo":false,"OQa":"'Subjective' information is what the patient tells you (e.g., pain, symptoms)."},{"text":"Objective","Zo":true,"OQa":"'Objective' information includes measurable, observable data from the physical exam and lab tests."},{"text":"Assessment","Zo":false,"OQa":"The 'assessment' is the physician's diagnosis based on the S and O data."},{"text":"Plan","Zo":false,"OQa":"The 'plan' outlines the next steps for the patient's care."}]}]}
-        
+        const quizData = {
+            "Lk": [{
+                "gua": 0,
+                "question": "During patient registration, which of the following is the most critical piece of information to verify for accurate billing?",
+                "hint": "Think about what information directly affects the financial side of the patient visit.",
+                "wA": [{
+                    "text": "The patient's preferred contact method.",
+                    "Zo": false,
+                    "OQa": "While a patient's contact information is important, it's not the most critical piece of information for accurate billing."
+                }, {
+                    "text": "The patient's insurance policy number and effective date.",
+                    "Zo": true,
+                    "OQa": "Verifying the insurance policy number and its effective date is crucial for ensuring that the patient's services are covered and for accurate claims submission."
+                }, {
+                    "text": "The patient's emergency contact information.",
+                    "Zo": false,
+                    "OQa": "Emergency contact information is important for patient safety, but it does not directly impact the billing process."
+                }, {
+                    "text": "The patient's date of birth and social security number.",
+                    "Zo": false,
+                    "OQa": "While both of these are important for identification, the insurance details are the primary information needed for billing purposes."
+                }]
+            }, {
+                "gua": 0,
+                "question": "Which of the following is a primary purpose of clinical charting in an EHR?",
+                "hint": "Consider the most important legal and medical function of patient records.",
+                "wA": [{
+                    "text": "To create a record of patient visits for the front desk staff.",
+                    "Zo": false,
+                    "OQa": "The purpose of clinical charting is to document patient care for medical and legal purposes, not for administrative convenience."
+                }, {
+                    "text": "To provide a financial record for billing and coding purposes.",
+                    "Zo": false,
+                    "OQa": "While clinical charts are used for billing and coding, their primary purpose is to document the patient's clinical history and care."
+                }, {
+                    "text": "To serve as a legal document of the patient's medical history and treatment plan.",
+                    "Zo": true,
+                    "OQa": "Clinical charts are a legal document that provides a comprehensive record of the patient's medical history, diagnoses, and treatment plan."
+                }, {
+                    "text": "To track a patient's exercise and dietary habits.",
+                    "Zo": false,
+                    "OQa": "Although a chart may contain this information, it is not the primary purpose of clinical charting."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What does the abbreviation 'CPT' stand for in the context of medical coding?",
+                "hint": "This abbreviation relates to the codes for services and procedures performed by a physician.",
+                "wA": [{
+                    "text": "Certified Patient Technician",
+                    "Zo": false,
+                    "OQa": "'CPT' stands for Current Procedural Terminology, not a type of technician."
+                }, {
+                    "text": "Current Patient Treatment",
+                    "Zo": false,
+                    "OQa": "'CPT' stands for Current Procedural Terminology, not patient treatment."
+                }, {
+                    "text": "Current Procedural Terminology",
+                    "Zo": true,
+                    "OQa": "CPT codes are a set of codes used to describe medical, surgical, and diagnostic services provided by physicians and other healthcare professionals."
+                }, {
+                    "text": "Clinical Protocol Terminology",
+                    "Zo": false,
+                    "OQa": "'CPT' stands for Current Procedural Terminology, not clinical protocol."
+                }]
+            }, {
+                "gua": 0,
+                "question": "Which of the following is a key administrative task handled by the front office staff?",
+                "hint": "Think about the tasks that are not directly related to a patient's medical care but are essential for running the office.",
+                "wA": [{
+                    "text": "Performing diagnostic tests.",
+                    "Zo": false,
+                    "OQa": "Diagnostic tests are clinical tasks typically performed by nurses or technicians."
+                }, {
+                    "text": "Developing a patient's treatment plan.",
+                    "Zo": false,
+                    "OQa": "Treatment plans are developed by the physician, not the administrative staff."
+                }, {
+                    "text": "Scheduling patient appointments and managing the flow of the clinic.",
+                    "Zo": true,
+                    "OQa": "Scheduling appointments and managing the flow of the clinic are core administrative responsibilities of the front office staff."
+                }, {
+                    "text": "Prescribing medications.",
+                    "Zo": false,
+                    "OQa": "Prescribing medications is a clinical task performed by a physician."
+                }]
+            }, {
+                "gua": 0,
+                "question": "According to HIPAA, which of the following is considered a 'covered entity'?",
+                "hint": "Think about what type of organization is legally responsible for protecting patient health information.",
+                "wA": [{
+                    "text": "A patient's family member.",
+                    "Zo": false,
+                    "OQa": "A patient's family member is not considered a 'covered entity' under HIPAA."
+                }, {
+                    "text": "A public library.",
+                    "Zo": false,
+                    "OQa": "A public library is not considered a 'covered entity' under HIPAA unless it is directly involved in a healthcare-related activity."
+                }, {
+                    "text": "A healthcare provider, such as a doctor's office or clinic.",
+                    "Zo": true,
+                    "OQa": "A healthcare provider is considered a 'covered entity' under HIPAA because they handle protected health information (PHI)."
+                }, {
+                    "text": "A non-medical retail store.",
+                    "Zo": false,
+                    "OQa": "A non-medical retail store is not a 'covered entity' under HIPAA."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the primary role of a medical biller?",
+                "hint": "Focus on the financial aspect of the medical office's workflow.",
+                "wA": [{
+                    "text": "To perform clinical examinations on patients.",
+                    "Zo": false,
+                    "OQa": "Clinical examinations are performed by physicians or other licensed healthcare professionals."
+                }, {
+                    "text": "To assign diagnostic and procedural codes to patient encounters.",
+                    "Zo": false,
+                    "OQa": "Assigning codes is the primary role of a medical coder, though billers often have coding knowledge."
+                }, {
+                    "text": "To process and submit claims to insurance companies for reimbursement.",
+                    "Zo": true,
+                    "OQa": "The primary role of a medical biller is to handle the financial side of healthcare by processing and submitting claims to insurance companies."
+                }, {
+                    "text": "To schedule appointments and manage the front desk.",
+                    "Zo": false,
+                    "OQa": "Scheduling appointments is an administrative task performed by front office staff."
+                }]
+            }, {
+                "gua": 0,
+                "question": "Which of the following is a common task performed when scheduling a new patient appointment?",
+                "hint": "Think about the basic information needed to create a patient's record in the system.",
+                "wA": [{
+                    "text": "Drawing blood for lab work.",
+                    "Zo": false,
+                    "OQa": "Drawing blood is a clinical procedure performed by a phlebotomist or nurse, not a scheduling task."
+                }, {
+                    "text": "Providing the patient with the physician's personal cell phone number.",
+                    "Zo": false,
+                    "OQa": "A physician's personal contact information is not typically provided during scheduling."
+                }, {
+                    "text": "Collecting the patient's demographic information, such as full name and address.",
+                    "Zo": true,
+                    "OQa": "Collecting demographic information is a standard and necessary step when scheduling a new patient to create a record in the system."
+                }, {
+                    "text": "Giving the patient a full medical diagnosis.",
+                    "Zo": false,
+                    "OQa": "Only a physician can provide a medical diagnosis."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the correct term for the part of a medical record that documents a patient's current symptoms and complaints?",
+                "hint": "The term for this section is a synonym for 'personally-reported' or 'non-measurable.'",
+                "wA": [{
+                    "text": "Assessment",
+                    "Zo": false,
+                    "OQa": "The assessment is the physician's diagnosis based on the symptoms, not the symptoms themselves."
+                }, {
+                    "text": "Plan",
+                    "Zo": false,
+                    "OQa": "The plan outlines the physician's next steps, not the patient's symptoms."
+                }, {
+                    "text": "Objective",
+                    "Zo": false,
+                    "OQa": "Objective information includes measurable data like blood pressure, not the patient's subjective complaints."
+                }, {
+                    "text": "Subjective",
+                    "Zo": true,
+                    "OQa": "Subjective information refers to the patient's personal, non-measurable reports, such as symptoms and complaints."
+                }]
+            }, {
+                "gua": 0,
+                "question": "Which of the following would be an example of a HIPAA violation?",
+                "hint": "Think about which action would involve unauthorized disclosure of protected health information (PHI).",
+                "wA": [{
+                    "text": "A nurse discusses a patient's diagnosis with a colleague who is also involved in the patient's care.","Zo": false,
+                    "OQa": "Discussing a patient's case with other healthcare professionals who are directly involved in their care is not a HIPAA violation under the 'need to know' principle."
+                }, {
+                    "text": "A receptionist posts a photo of a patient's medical chart on social media.",
+                    "Zo": true,
+                    "OQa": "Sharing any patient information, especially on a public platform like social media, is a clear violation of HIPAA rules regarding the protection of protected health information (PHI)."
+                }, {
+                    "text": "A patient requests and receives a copy of their own medical records.",
+                    "Zo": false,
+                    "OQa": "Patients have a right under HIPAA to access their own medical records."
+                }, {
+                    "text": "A doctor uses a patient's name and age for a case study with their permission.",
+                    "Zo": false,
+                    "OQa": "Sharing patient information with their explicit permission and for a professional purpose is not a HIPAA violation."
+                }]
+            }, {
+                "gua": 0,
+                "question": "The term 'remittance advice' in billing refers to:",
+                "hint": "This term is related to the communication between a provider and an insurance company after a claim has been processed.",
+                "wA": [{
+                    "text": "An automated system for sending appointment reminders to patients.",
+                    "Zo": false,
+                    "OQa": "A remittance advice is not an appointment reminder system; it is a document that explains the payment of a claim."
+                }, {
+                    "text": "A document from an insurance company that explains what they paid on a claim and why.",
+                    "Zo": true,
+                    "OQa": "A remittance advice (or RA) is a document from an insurer that provides detailed information about a claim's payment, rejection, or denial, and is essential for medical billing."
+                }, {
+                    "text": "A referral form from a primary care physician to a specialist.",
+                    "Zo": false,
+                    "OQa": "A remittance advice is not a referral form; that is a separate document."
+                }, {
+                    "text": "A patient statement showing the total amount they owe after insurance has paid.",
+                    "Zo": false,
+                    "OQa": "A patient statement shows the patient's financial responsibility, while a remittance advice is for the provider and explains the insurer's payment."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the main purpose of prior authorization in the medical billing process?",
+                "hint": "Think about why an insurance company would need to approve a procedure beforehand.",
+                "wA": [{
+                    "text": "To track the number of referrals sent to specialists.",
+                    "Zo": false,
+                    "OQa": "Prior authorization is not primarily for tracking referrals; it is for pre-approving medical necessity."
+                }, {
+                    "text": "To ensure the patient has an active insurance policy.",
+                    "Zo": false,
+                    "OQa": "Verifying active insurance is part of patient registration, not prior authorization."
+                }, {
+                    "text": "To get pre-approval from the insurance company for a medical service or procedure.",
+                    "Zo": true,
+                    "OQa": "Prior authorization is the process of obtaining a pre-approval from the patient's insurance company before a service or procedure is performed to ensure it will be covered."
+                }, {
+                    "text": "To determine a patient's copay and deductible for a visit.",
+                    "Zo": false,
+                    "OQa": "Copay and deductible amounts are part of the insurance plan details, not the prior authorization process."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the best practice for handling a 'no-show' patient appointment?",
+                "hint": "Consider what steps are important for both billing and patient care.",
+                "wA": [{
+                    "text": "Remove the appointment from the schedule without any documentation.",
+                    "Zo": false,
+                    "OQa": "It is crucial to document a 'no-show' to maintain an accurate patient record and for billing purposes if a no-show fee is applied."
+                }, {
+                    "text": "Document the no-show in the patient's chart and consider a no-show fee if the policy allows.",
+                    "Zo": true,
+                    "OQa": "Properly documenting a no-show in the patient's chart and applying a no-show fee (if the clinic's policy permits) are essential administrative tasks."
+                }, {
+                    "text": "Reschedule the patient for the same day.",
+                    "Zo": false,
+                    "OQa": "While rescheduling is a goal, the best practice is to first document the no-show and then contact the patient to reschedule."
+                }, {
+                    "text": "Send a bill to the patient for the full cost of the visit.",
+                    "Zo": false,
+                    "OQa": "Sending a bill for the full cost is not standard practice; a no-show fee is typically a much smaller amount."
+                }]
+            }, {
+                "gua": 0,
+                "question": "In medical billing, what does 'A/R aging' refer to?",
+                "hint": "A/R stands for Accounts Receivable. Think about what 'aging' means in this context.",
+                "wA": [{
+                    "text": "The process of a patient becoming older.",
+                    "Zo": false,
+                    "OQa": "'A/R aging' is a financial term and has nothing to do with the patient's age."
+                }, {
+                    "text": "To analyze which services are most profitable for the clinic.",
+                    "Zo": false,
+                    "OQa": "A financial profitability report would be used to analyze profitable services."
+                }, {
+                    "text": "To identify which outstanding claims are the oldest and need the most urgent follow-up.",
+                    "Zo": true,
+                    "OQa": "The A/R aging report organizes claims by how long they have been outstanding, helping staff prioritize follow-up on older claims."
+                }, {
+                    "text": "To determine the age of a medical record for archiving purposes.",
+                    "Zo": false,
+                    "OQa": "This report is a financial tool for billing and collections, not for record management."
+                }]
+            }, {
+                "gua": 0,
+                "question": "A patient needs to see a specialist for a skin condition. What is the key role of the front office staff in managing this referral?",
+                "hint": "What is the most important step to make sure the specialist visit is covered by insurance?",
+                "wA": [{
+                    "text": "Performing a preliminary skin examination.",
+                    "Zo": false,
+                    "OQa": "Only a qualified clinician can perform a skin examination."
+                }, {
+                    "text": "Confirming with the specialist's office that they accept the patient's insurance and verifying a referral is needed.",
+                    "Zo": true,
+                    "OQa": "Verifying insurance and a referral is the most critical administrative step to ensure the patient's visit is covered and prevent denial."
+                }, {
+                    "text": "Telling the patient to find a specialist on their own.",
+                    "Zo": false,
+                    "OQa": "Assisting with the referral process is a core administrative task."
+                }, {
+                    "text": "Diagnosing the patient's skin condition.",
+                    "Zo": false,
+                    "OQa": "Diagnosis is the responsibility of the physician, not the administrative staff."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What does the medical term 'nephrectomy' mean?",
+                "hint": "Look at the root and suffix of the word. 'Nephr' refers to a specific organ, and '-ectomy' means removal.",
+                "wA": [{
+                    "text": "Surgical repair of a nerve.",
+                    "Zo": false,
+                    "OQa": "'Nephr-' refers to the kidney, and 'neur-' refers to a nerve."
+                }, {
+                    "text": "Excision (removal) of a kidney.",
+                    "Zo": true,
+                    "OQa": "'Nephr-' is the root word for kidney, and '-ectomy' is the suffix for surgical removal."
+                }, {
+                    "text": "Surgical repair of the heart.",
+                    "Zo": false,
+                    "OQa": "'Cardi-' refers to the heart."
+                }, {
+                    "text": "Inflammation of the liver.",
+                    "Zo": false,
+                    "OQa": "'Hepat-' refers to the liver, and '-itis' means inflammation."
+                }]
+            }, {
+                "gua": 0,
+                "question": "In a SOAP note, what type of information is documented under the 'O' section?",
+                "hint": "'S' is for subjective, 'A' is for assessment, and 'P' is for plan. What is the 'O' for?",
+                "wA": [{
+                    "text": "The physician's diagnosis.",
+                    "Zo": false,
+                    "OQa": "This is the 'A' (Assessment) part of the SOAP note."
+                }, {
+                    "text": "The patient's reported symptoms.",
+                    "Zo": false,
+                    "OQa": "This is the 'S' (Subjective) part of the SOAP note."
+                }, {
+                    "text": "Objective findings from the examination.",
+                    "Zo": true,
+                    "OQa": "The 'O' in SOAP stands for Objective, which includes measurable data such as blood pressure, temperature, lab results, and findings from the physical exam."
+                }, {
+                    "text": "The plan for the patient's treatment.",
+                    "Zo": false,
+                    "OQa": "This is the 'P' (Plan) part of the SOAP note."
+                }]
+            }, {
+                "gua": 0,
+                "question": "A patient calls and asks for their spouse's test results. What is the correct action to take, according to HIPAA?",
+                "hint": "Consider who is authorized to receive protected health information.",
+                "wA": [{
+                    "text": "Provide the information, as they are a family member.",
+                    "Zo": false,
+                    "OQa": "You cannot provide information to a family member without the patient's explicit written consent, unless the patient has specified this verbally."
+                }, {
+                    "text": "Refuse to provide the information unless you have a signed release from the patient.",
+                    "Zo": true,
+                    "OQa": "HIPAA requires a signed release or explicit verbal consent from the patient before disclosing any protected health information (PHI) to anyone, including family members."
+                }, {
+                    "text": "Transfer the call to the physician.",
+                    "Zo": false,
+                    "OQa": "Transferring the call is not a solution, as the physician also cannot disclose the information without consent."
+                }, {
+                    "text": "Ask the patient to call back later.",
+                    "Zo": false,
+                    "OQa": "This is an inappropriate response and does not address the HIPAA regulations."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is a 'clean claim' in medical billing?",
+                "hint": "Think about a claim that is free of errors and ready to be processed.",
+                "wA": [{
+                    "text": "A claim submitted to an insurance company that is missing a patient signature.",
+                    "Zo": false,
+                    "OQa": "A clean claim is a claim that is free of errors and is submitted to the insurance company with all the necessary information."
+                }, {
+                    "text": "A claim that has been approved for payment without any errors.",
+                    "Zo": true,
+                    "OQa": "A clean claim is a claim that has been approved for payment without any errors, which means it will be processed and paid without any issues."
+                }, {
+                    "text": "A claim that has been denied by the insurance company.",
+                    "Zo": false,
+                    "OQa": "A claim that has been denied is not a clean claim, as it has errors that prevent it from being processed."
+                }, {
+                    "text": "A claim that has been paid in full by the patient.",
+                    "Zo": false,
+                    "OQa": "A clean claim is a term used for claims submitted to insurance companies, not a term for patient payments."
+                }]
+            }, {
+                "gua": 0,
+                "question": "The medical term prefix 'tachy-' refers to what?",
+                "hint": "This prefix is often used to describe a rapid heart rate.",
+                "wA": [{
+                    "text": "Slow",
+                    "Zo": false,
+                    "OQa": "The prefix for slow is 'brady-."
+                }, {
+                    "text": "Difficult or painful",
+                    "Zo": false,
+                    "OQa": "The prefix for difficult or painful is 'dys-."
+                }, {
+                    "text": "Fast or rapid",
+                    "Zo": true,
+                    "OQa": "The prefix 'tachy-' is used to describe something that is fast or rapid, such as in the word 'tachycardia' (a rapid heart rate)."
+                }, {
+                    "text": "Below or deficient",
+                    "Zo": false,
+                    "OQa": "The prefix for below or deficient is 'hypo-."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the purpose of an 'audit trail' in an EHR?",
+                "hint": "Think about how the system keeps a record of who did what and when.",
+                "wA": [{
+                    "text": "To track patient's physical movements within the clinic.",
+                    "Zo": false,
+                    "OQa": "An audit trail tracks electronic access and changes, not physical movements."
+                }, {
+                    "text": "To create a list of all patients that have been seen in a day.",
+                    "Zo": false,
+                    "OQa": "A patient log or day sheet would be used to create a list of patients seen in a day."
+                }, {
+                    "text": "To record all electronic activity in a patient's record, including who accessed it, when, and what changes were made.",
+                    "Zo": true,
+                    "OQa": "An audit trail is a chronological log that records all user activity, ensuring accountability and compliance with regulatory standards like HIPAA."
+                }, {
+                    "text": "To send automated reminders to patients about upcoming appointments.",
+                    "Zo": false,
+                    "OQa": "Appointment reminders are typically a scheduling function, not an audit trail."
+                }]
+            }, {
+                "gua": 0,
+                "question": "The denial reason 'CO 45' on a remittance advice indicates which of the following?",
+                "hint": "The 'CO' in this code stands for 'Contractual Obligation'.",
+                "wA": [{
+                    "text": "The patient's deductible has not been met.",
+                    "Zo": false,
+                    "OQa": "'CO 45' indicates that the charge has exceeded the contracted provider fee schedule amount and is a contractual obligation."
+                }, {
+                    "text": "The charge is not covered by the patient's benefit plan.",
+                    "Zo": false,
+                    "OQa": "This is a common reason for a denial, but the code 'CO 45' specifically refers to contractual obligations."
+                }, {
+                    "text": "The charge exceeds the contracted provider fee schedule amount.",
+                    "Zo": true,
+                    "OQa": "The 'CO' stands for contractual obligation, and the code '45' indicates that the charge exceeds the allowed amount based on the provider's contract with the payer."
+                }, {
+                    "text": "The claim was submitted to the wrong insurance company.",
+                    "Zo": false,
+                    "OQa": "This would be a denial for a different reason, not code 45."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the recommended first step when you receive a claim denial from an insurance payer?",
+                "hint": "Before you can fix the problem, you must understand what the problem is.",
+                "wA": [{
+                    "text": "Immediately write off the balance as uncollectible.",
+                    "Zo": false,
+                    "OQa": "Writing off the balance should be a last resort, as the claim may be recoverable."
+                }, {
+                    "text": "Send a bill for the full amount to the patient.",
+                    "Zo": false,
+                    "OQa": "You should not bill the patient for the full amount until you have fully managed the denial and confirmed patient responsibility."
+                }, {
+                    "text": "Identify the denial reason and correct any errors found.",
+                    "Zo": true,
+                    "OQa": "The first step in denial management is to understand why the claim was denied, which allows you to correct the issue and resubmit it."
+                }, {
+                    "text": "Call the patient to inform them of the denial.",
+                    "Zo": false,
+                    "OQa": "While the patient may need to be informed eventually, the first step is to identify and resolve the issue on the provider side."
+                }]
+            }, {
+                "gua": 0,
+                "question": "The 'Accounts Receivable (A/R) aging report' in a medical office is used for what purpose?",
+                "hint": "This report helps the billing staff understand which unpaid claims have been sitting for the longest time.",
+                "wA": [{
+                    "text": "To track the age of each patient in the practice.",
+                    "Zo": false,
+                    "OQa": "This report is for tracking the age of unpaid claims, not the age of patients."
+                }, {
+                    "text": "To analyze which services are most profitable for the clinic.",
+                    "Zo": false,
+                    "OQa": "A financial profitability report would be used to analyze profitable services."
+                }, {
+                    "text": "To identify which outstanding claims are the oldest and need the most urgent follow-up.",
+                    "Zo": true,
+                    "OQa": "The A/R aging report organizes claims by how long they have been outstanding, allowing the office to prioritize collection efforts."
+                }, {
+                    "text": "To determine the age of a medical record for archiving purposes.",
+                    "Zo": false,
+                    "OQa": "This report is a financial tool for billing and collections, not for record management."
+                }]
+            }, {
+                "gua": 0,
+                "question": "When a patient's insurance plan requires a 'co-insurance', what does this mean?",
+                "hint": "This payment arrangement is a form of cost-sharing with your insurance company.",
+                "wA": [{
+                    "text": "The patient must pay a fixed fee for each service after the deductible is met.",
+                    "Zo": false,
+                    "OQa": "A fixed fee after a deductible is typically a copay."
+                }, {
+                    "text": "The insurance company will not pay anything until the patient's out-of-pocket maximum is reached.",
+                    "Zo": false,
+                    "OQa": "The patient is still responsible for copays and deductibles, even if their out-of-pocket maximum is not reached."
+                }, {
+                    "text": "The patient and insurance company will share the cost of a service based on a predetermined percentage.",
+                    "Zo": true,
+                    "OQa": "Coinsurance is the patient's share of the cost for a covered service, calculated as a percentage after the deductible is met."
+                }, {
+                    "text": "The patient must pay for a portion of the service upfront as a deposit.",
+                    "Zo": false,
+                    "OQa": "An upfront deposit is not the definition of coinsurance."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the key purpose of an e-prescribing (e-Rx) function in an EHR system?",
+                "hint": "Think about how a doctor can send a patient's prescription to the pharmacy in a fast, secure, and error-free way.",
+                "wA": [{
+                    "text": "To send a referral to a specialist's office.",
+                    "Zo": false,
+                    "OQa": "E-prescribing is specifically for prescriptions, not for sending referrals."
+                }, {
+                    "text": "To send patient records to a hospital.",
+                    "Zo": false,
+                    "OQa": "Electronic records are shared between providers, but this is a broader EHR function, not e-prescribing."
+                }, {
+                    "text": "To electronically submit prescriptions directly to a pharmacy, reducing errors and saving time.",
+                    "Zo": true,
+                    "OQa": "E-prescribing allows physicians to send prescriptions directly to a patient's pharmacy, which helps reduce errors, improves safety, and streamlines the process."
+                }, {
+                    "text": "To process and manage patient payments.",
+                    "Zo": false,
+                    "OQa": "Processing payments is handled by the billing and finance departments."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the primary purpose of a 'UB-04' claim form?",
+                "hint": "This form is used for hospital and inpatient services.",
+                "wA": [{
+                    "text": "To bill for services from a physician's office.",
+                    "Zo": false,
+                    "OQa": "The CMS-1500 is used for physician services."
+                }, {
+                    "text": "To submit a patient's medical history to an insurance company.",
+                    "Zo": false,
+                    "OQa": "The UB-04 is a billing document, not a comprehensive medical history."
+                }, {
+                    "text": "To bill for institutional services, such as hospital stays and outpatient care.",
+                    "Zo": true,
+                    "OQa": "The UB-04, also known as the CMS-1450, is the standard claim form used by institutional providers like hospitals, clinics, and skilled nursing facilities."
+                }, {
+                    "text": "To obtain prior authorization for a medical procedure.",
+                    "Zo": false,
+                    "OQa": "Prior authorization is a separate process from claim submission."
+                }]
+            }, {
+                "gua": 0,
+                "question": "Which claim form would a private physician's office use to bill an insurance company for an office visit?",
+                "hint": "This form is for professional services.",
+                "wA": [{
+                    "text": "CMS-1500",
+                    "Zo": true,
+                    "OQa": "The CMS-1500 is the standard form used by non-institutional providers, such as private physician practices, to bill for professional services."
+                }, {
+                    "text": "UB-04",
+                    "Zo": false,
+                    "OQa": "The UB-04 is used for institutional billing, such as by hospitals."
+                }, {
+                    "text": "CMS-1450",
+                    "Zo": false,
+                    "OQa": "The CMS-1450 is another name for the UB-04, used for institutional billing."
+                }, {
+                    "text": "A patient's superbill",
+                    "Zo": false,
+                    "OQa": "A superbill is a pre-printed form used by a provider to document services rendered, but the CMS-1500 is the official claim form sent to the payer."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the meaning of the medical term 'hypoglycemia'?",
+                "hint": "Break the word down: 'hypo-' + 'glyc' + '-emia'.",
+                "wA": [{
+                    "text": "High blood pressure",
+                    "Zo": false,
+                    "OQa": "High blood pressure is 'hypertension'."
+                }, {
+                    "text": "Low blood sugar",
+                    "Zo": true,
+                    "OQa": "'Hypo-' means low, 'glyc' refers to sugar (glucose), and '-emia' relates to the blood. So, 'hypoglycemia' is low blood sugar."
+                }, {
+                    "text": "Inflammation of the liver",
+                    "Zo": false,
+                    "OQa": "Inflammation of the liver is 'hepatitis'."
+                }, {
+                    "text": "Surgical removal of the stomach",
+                    "Zo": false,
+                    "OQa": "Surgical removal of the stomach is 'gastrectomy'."
+                }]
+            }, {
+                "gua": 0,
+                "question": "Which part of a patient's record documents measurable data, such as blood pressure and lab results?",
+                "hint": "Think about the 'O' in a SOAP note.",
+                "wA": [{
+                    "text": "Subjective",
+                    "Zo": false,
+                    "OQa": "'Subjective' information is what the patient tells you (e.g., pain, symptoms)."
+                }, {
+                    "text": "Objective",
+                    "Zo": true,
+                    "OQa": "'Objective' information includes measurable, observable data from the physical exam and lab tests."
+                }, {
+                    "text": "Assessment",
+                    "Zo": false,
+                    "OQa": "The 'assessment' is the physician's diagnosis based on the S and O data."
+                }, {
+                    "text": "Plan",
+                    "Zo": false,
+                    "OQa": "The 'plan' outlines the next steps for the patient's care."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is 'Meaningful Use' and how did it impact the adoption of EHRs?",
+                "hint": "It was a federal program that encouraged the use of EHRs through incentives.",
+                "wA": [{
+                    "text": "A set of rules for patient data privacy.",
+                    "Zo": false,
+                    "OQa": "While Meaningful Use had privacy components, its primary focus was on the use of EHRs, not just privacy."
+                }, {
+                    "text": "A program to provide financial incentives for using EHRs to improve patient care and data exchange.",
+                    "Zo": true,
+                    "OQa": "Meaningful Use was a federal incentive program that rewarded eligible professionals and hospitals for demonstrating they were using EHRs to improve care quality, safety, and efficiency."
+                }, {
+                    "text": "A new version of the ICD-10 coding system.",
+                    "Zo": false,
+                    "OQa": "Meaningful Use is a regulatory program, not a medical coding system."
+                }, {
+                    "text": "A standard for electronic health record software certification.",
+                    "Zo": false,
+                    "OQa": "EHR certification was a component of Meaningful Use, but it wasn't the entire program itself."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the purpose of the 'lab results' section in a patient's chart?",
+                "hint": "Think about what a doctor would need to see to make a diagnosis.",
+                "wA": [{
+                    "text": "To provide information on the patient's dietary habits.",
+                    "Zo": false,
+                    "OQa": "Dietary habits are typically in the patient's history or notes, not the lab results section."
+                }, {
+                    "text": "To document the findings from blood work, urine tests, and other diagnostic tests.",
+                    "Zo": true,
+                    "OQa": "The 'lab results' section is where all laboratory findings, such as blood and urine tests, are stored for easy access and review by healthcare providers."
+                }, {
+                    "text": "To show a history of the patient's past appointments.",
+                    "Zo": false,
+                    "OQa": "A history of appointments is stored in the scheduling or patient history section of the EHR."
+                }, {
+                    "text": "To track the patient's insurance payments.",
+                    "Zo": false,
+                    "OQa": "Insurance payments are part of the billing and accounts receivable sections."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is a Health Information Exchange (HIE)?",
+                "hint": "Think about how different healthcare systems can share patient information.",
+                "wA": [{
+                    "text": "A patient's personal medical record that they store on their phone.",
+                    "Zo": false,
+                    "OQa": "This describes a Personal Health Record (PHR), not an HIE."
+                }, {
+                    "text": "A network that allows healthcare providers and organizations to securely share patient health information.",
+                    "Zo": true,
+                    "OQa": "An HIE is a secure network that facilitates the electronic sharing of patient information among healthcare providers, helping to improve care coordination and reduce medical errors."
+                }, {
+                    "text": "A system used to manage hospital bed availability.",
+                    "Zo": false,
+                    "OQa": "A system for managing hospital beds is a facility management tool, not an HIE."
+                }, {
+                    "text": "A database of all medical terms and abbreviations.",
+                    "Zo": false,
+                    "OQa": "A database of medical terms is a medical dictionary or terminology system."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the primary role of a medical scribe in an EHR environment?",
+                "hint": "Their job is to assist the physician with documentation.",
+                "wA": [{
+                    "text": "To schedule patient appointments.",
+                    "Zo": false,
+                    "OQa": "Scheduling is typically done by administrative staff."
+                }, {
+                    "text": "To perform medical procedures under the supervision of a physician.",
+                    "Zo": false,
+                    "OQa": "Medical scribes do not perform clinical procedures."
+                }, {
+                    "text": "To document clinical information in the EHR during a patient encounter.",
+                    "Zo": true,
+                    "OQa": "A medical scribe's primary role is to document the patient's visit in real-time, allowing the physician to focus on the patient."
+                }, {
+                    "text": "To process medical claims for insurance companies.",
+                    "Zo": false,
+                    "OQa": "Processing claims is the role of a medical biller."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the difference between a CPT code and an ICD-10 code?",
+                "hint": "One code describes the 'what' and the other describes the 'why'.",
+                "wA": [{
+                    "text": "CPT codes are for hospital services, while ICD-10 codes are for physician services.",
+                    "Zo": false,
+                    "OQa": "CPT codes are used for professional services, while ICD-10 codes are used across all settings."
+                }, {
+                    "text": "CPT codes describe diagnoses, while ICD-10 codes describe procedures.",
+                    "Zo": false,
+                    "OQa": "It is the opposite; CPT codes describe procedures, and ICD-10 codes describe diagnoses."
+                }, {
+                    "text": "CPT codes describe procedures and services, while ICD-10 codes describe diagnoses and conditions.",
+                    "Zo": true,
+                    "OQa": "CPT (Current Procedural Terminology) codes are used to bill for medical services and procedures, while ICD-10 (International Classification of Diseases, 10th Edition) codes are used to classify diagnoses and health conditions."
+                }, {
+                    "text": "CPT codes are only for billing, and ICD-10 codes are only for research.",
+                    "Zo": false,
+                    "OQa": "Both CPT and ICD-10 codes are used for both billing and research."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is a patient's right of access to their health information under HIPAA?",
+                "hint": "Think about what the patient is legally entitled to see.",
+                "wA": [{
+                    "text": "Patients can view their records but cannot get copies.",
+                    "Zo": false,
+                    "OQa": "HIPAA's right of access includes both viewing and obtaining a copy of the records."
+                }, {
+                    "text": "Patients have the right to inspect and obtain a copy of their PHI from a covered entity.",
+                    "Zo": true,
+                    "OQa": "HIPAA gives patients a broad right to inspect, review, and receive copies of their protected health information in a designated record set."
+                }, {
+                    "text": "Patients can only access their records if the doctor gives permission.",
+                    "Zo": false,
+                    "OQa": "The right to access is a legal right under HIPAA and does not require a physician's permission."
+                }, {
+                    "text": "Patients must pay a fee to get a copy of their records.",
+                    "Zo": false,
+                    "OQa": "HIPAA allows covered entities to charge a reasonable, cost-based fee, but it is not required for a patient to pay for access."
+                }]
+            }, {
+                "gua": 0,
+                "question": "How can an EHR help prevent medication errors?",
+                "hint": "Think about what the EHR can do automatically to check for potential problems.",
+                "wA": [{
+                    "text": "It can automatically order all the necessary medications for a patient.",
+                    "Zo": false,
+                    "OQa": "An EHR cannot automatically order medications; a physician must prescribe them."
+                }, {
+                    "text": "It has features like drug-allergy and drug-drug interaction alerts.",
+                    "Zo": true,
+                    "OQa": "EHRs include clinical decision support tools that alert providers to potential medication errors, such as a patient's known allergies or interactions between prescribed drugs."
+                }, {
+                    "text": "It ensures that patients always take their medications on time.",
+                    "Zo": false,
+                    "OQa": "An EHR can help with medication adherence through reminders, but it cannot ensure that a patient takes a medication."
+                }, {
+                    "text": "It allows a pharmacist to change a prescription without a physician's approval.",
+                    "Zo": false,
+                    "OQa": "A pharmacist can only change a prescription with a physician's approval."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the purpose of a patient's 'problem list' in an EHR?",
+                "hint": "Think about a central place to quickly see a patient's key health issues.",
+                "wA": [{
+                    "text": "To document the patient's personal interests and hobbies.",
+                    "Zo": false,
+                    "OQa": "Personal interests are typically documented in the social history section."
+                }, {
+                    "text": "To provide a comprehensive list of all of a patient's past and current diagnoses and health conditions.",
+                    "Zo": true,
+                    "OQa": "The problem list is a critical component of the EHR that provides a concise, chronological list of a patient's active and resolved health conditions."
+                }, {
+                    "text": "To track the patient's financial balance.",
+                    "Zo": false,
+                    "OQa": "Financial information is stored in the billing module."
+                }, {
+                    "text": "To record the patient's family members and their contact information.",
+                    "Zo": false,
+                    "OQa": "Family history is typically documented in a separate section of the EHR."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the role of a 'digital signature' in an EHR?",
+                "hint": "It has the same legal weight as a handwritten signature.",
+                "wA": [{
+                    "text": "To track a patient's location within the clinic.",
+                    "Zo": false,
+                    "OQa": "Digital signatures are used for authentication and legal purposes, not for physical tracking."
+                }, {
+                    "text": "To automatically generate a list of patient allergies.",
+                    "Zo": false,
+                    "OQa": "Allergy lists are generated from patient data entry, not a digital signature."
+                }, {
+                    "text": "To legally and securely authenticate a healthcare provider's entry or order.",
+                    "Zo": true,
+                    "OQa": "A digital signature is a secure way to confirm the identity of the person who created or approved a document, such as a lab order or a clinical note, and ensures that it has not been altered."
+                }, {
+                    "text": "To send automated billing reminders to a patient.",
+                    "Zo": false,
+                    "OQa": "Billing reminders are a function of the billing system, not digital signatures."
+                }]
+            }, {
+                "gua": 0,
+                "question": "Define 'S.O.A.P.' in the context of clinical notes.",
+                "hint": "It is an acronym for a common note-taking format.",
+                "wA": [{
+                    "text": "Subjective, Objective, Analysis, Plan",
+                    "Zo": false,
+                    "OQa": "The 'A' in SOAP stands for Assessment, not Analysis."
+                }, {
+                    "text": "Subjective, Objective, Assessment, Plan",
+                    "Zo": true,
+                    "OQa": "SOAP is a widely used method for documenting clinical notes, standing for Subjective (patient's reported symptoms), Objective (measurable data), Assessment (diagnosis), and Plan (treatment plan)."
+                }, {
+                    "text": "Security, Operations, Access, Privacy",
+                    "Zo": false,
+                    "OQa": "This is not the correct definition of SOAP in a clinical context."
+                }, {
+                    "text": "Symptoms, Observations, Allergies, Prescriptions",
+                    "Zo": false,
+                    "OQa": "While these are all part of a clinical note, they are not the components of the SOAP format."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the purpose of a medication reconciliation feature in an EHR?",
+                "hint": "It is a process to ensure a complete and accurate medication list.",
+                "wA": [{
+                    "text": "To automate the renewal of all patient prescriptions.",
+                    "Zo": false,
+                    "OQa": "Medication reconciliation is a process of review, not automatic renewal."
+                }, {
+                    "text": "To compare a patient's current medications with those on record to prevent errors and ensure an accurate list.",
+                    "Zo": true,
+                    "OQa": "Medication reconciliation is the process of creating the most accurate list possible of all medications a patient is taking, including drug name, dosage, frequency, and route, and is critical for patient safety."
+                }, {
+                    "text": "To provide a list of all medications that are not covered by the patient's insurance.",
+                    "Zo": false,
+                    "OQa": "This is a function of the billing system and pharmacy formulary checks, not medication reconciliation."
+                }, {
+                    "text": "To allow the patient to order over-the-counter medications from the clinic.",
+                    "Zo": false,
+                    "OQa": "This is not a function of medication reconciliation."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the purpose of the 'allergies' section in a patient's EHR?",
+                "hint": "This section is crucial for patient safety.",
+                "wA": [{
+                    "text": "To list all of the patient's favorite foods.",
+                    "Zo": false,
+                    "OQa": "Favorite foods are not typically documented in an EHR unless they relate to a health condition."
+                }, {
+                    "text": "To track a patient's seasonal allergies for billing purposes.",
+                    "Zo": false,
+                    "OQa": "While allergies are documented, they are not primarily for billing."
+                }, {
+                    "text": "To provide a record of a patient's reactions to medications, foods, and other substances to prevent adverse events.",
+                    "Zo": true,
+                    "OQa": "The 'allergies' section is a critical safety feature that provides a clear record of a patient's known allergies, enabling the EHR to provide alerts and help prevent life-threatening reactions."
+                }, {
+                    "text": "To track a patient's immunization history.",
+                    "Zo": false,
+                    "OQa": "Immunization history is documented in a separate section of the EHR."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is the difference between a 'patient chart' and a 'patient record'?",
+                "hint": "One is the physical or electronic document used during a visit; the other is the comprehensive, long-term collection of data.",
+                "wA": [{
+                    "text": "They are the same thing and the terms are interchangeable.",
+                    "Zo": false,
+                    "OQa": "While often used interchangeably, there is a technical distinction."
+                }, {
+                    "text": "A patient chart is a legal document, and a patient record is not.",
+                    "Zo": false,
+                    "OQa": "Both are considered legal documents."
+                }, {
+                    "text": "A patient chart is the active, in-clinic document, while the patient record is the comprehensive, long-term collection of data.",
+                    "Zo": true,
+                    "OQa": "The term 'patient chart' often refers to the specific physical or electronic folder used for a single visit, while the 'patient record' is the entire history of the patient's care."
+                }, {
+                    "text": "A patient chart is the patient's personal document, and a patient record is a document for a hospital.",
+                    "Zo": false,
+                    "OQa": "Both a chart and a record are managed by healthcare providers."
+                }]
+            }, {
+                "gua": 0,
+                "question": "How do EHRs support the continuity of care for patients who see multiple providers?",
+                "hint": "Think about how a new doctor can easily get up to speed on a patient's history.",
+                "wA": [{
+                    "text": "By automatically scheduling appointments with all specialists.",
+                    "Zo": false,
+                    "OQa": "While an EHR can assist with scheduling, it does not automatically book appointments with specialists."
+                }, {
+                    "text": "By providing a single, centralized record that all authorized providers can access.",
+                    "Zo": true,
+                    "OQa": "EHRs allow for seamless and secure sharing of patient information among authorized providers, ensuring that each provider has a complete picture of the patient's health history, treatments, and medications."
+                }, {
+                    "text": "By sending a text message to the patient after every visit.",
+                    "Zo": false,
+                    "OQa": "This is a patient engagement feature, not a core function for continuity of care."
+                }, {
+                    "text": "By eliminating the need for a patient to fill out new forms.",
+                    "Zo": false,
+                    "OQa": "While EHRs reduce the need for repeat paperwork, the main benefit is the sharing of clinical data."
+                }]
+            }, {
+                "gua": 0,
+                "question": "How do EHRs help with chronic disease management?",
+                "hint": "Think about how the system can track progress over time.",
+                "wA": [{
+                    "text": "They can automatically diagnose chronic diseases.",
+                    "Zo": false,
+                    "OQa": "Only a physician can make a diagnosis."
+                }, {
+                    "text": "They provide a way to track long-term lab results, vitals, and treatment plans for a patient.",
+                    "Zo": true,
+                    "OQa": "EHRs allow healthcare providers to monitor a patient's long-term health, track key metrics like blood pressure and blood sugar, and manage care plans, which is essential for managing chronic diseases."
+                }, {
+                    "text": "They can force a patient to follow a specific diet.",
+                    "Zo": false,
+                    "OQa": "An EHR cannot force a patient to follow a treatment plan."
+                }, {
+                    "text": "They automatically send a bill to the patient every week.",
+                    "Zo": false,
+                    "OQa": "Billing is a separate function and not directly related to chronic disease management."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is a 'workflow' in an EHR and how does it optimize clinic operations?",
+                "hint": "Think about the sequence of steps a staff member follows to complete a task.",
+                "wA": [{
+                    "text": "A feature that allows a patient to sign in using their fingerprint.",
+                    "Zo": false,
+                    "OQa": "This is a biometric security feature, not a workflow."
+                }, {
+                    "text": "A predefined series of steps or tasks that staff members follow to complete a process, such as patient check-in or billing.",
+                    "Zo": true,
+                    "OQa": "A workflow is a series of automated or standardized steps within the EHR that guides staff through a process, improving efficiency, reducing errors, and ensuring consistency."
+                }, {
+                    "text": "The process of a patient physically walking through the clinic.",
+                    "Zo": false,
+                    "OQa": "A workflow is a digital process, not a physical one."
+                }, {
+                    "text": "A list of all the clinic's employees and their contact information.",
+                    "Zo": false,
+                    "OQa": "An employee list is part of the administrative functions, not a workflow."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is telemedicine integration within an EHR?",
+                "hint": "Think about how a doctor can see a patient remotely.",
+                "wA": [{
+                    "text": "A feature that allows patients to play games online.",
+                    "Zo": false,
+                    "OQa": "Telemedicine is for remote medical care, not for games."
+                }, {
+                    "text": "A software application that allows patients to communicate with a physician via video or phone call directly from the EHR.",
+                    "Zo": true,
+                    "OQa": "Telemedicine integration allows healthcare providers to conduct virtual visits with patients, and to access and document the visit directly within the patient's EHR, which ensures a seamless clinical record."
+                }, {
+                    "text": "A way to send a patient's test results to another clinic.",
+                    "Zo": false,
+                    "OQa": "This is a function of an HIE, not telemedicine."
+                }, {
+                    "text": "A system for tracking the delivery of medical supplies.",
+                    "Zo": false,
+                    "OQa": "This is a supply chain management system."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What are some of the key security risks associated with mobile access to EHRs?",
+                "hint": "Think about what could happen if a mobile device is lost or stolen.",
+                "wA": [{
+                    "text": "The risk of a patient changing their own medical history.",
+                    "Zo": false,
+                    "OQa": "Mobile access for providers is different from patient portal access, and the risk is related to unauthorized access from a lost device."
+                }, {
+                    "text": "Increased risk of a data breach, unauthorized access, and loss of the device.",
+                    "Zo": true,
+                    "OQa": "Mobile devices are highly susceptible to loss or theft, which can lead to a data breach if the device is not properly secured with encryption and authentication."
+                }, {
+                    "text": "The inability to see a patient's full medical history.",
+                    "Zo": false,
+                    "OQa": "A well-designed mobile EHR would provide access to the full record."
+                }, {
+                    "text": "The inability to send prescriptions to a pharmacy.",
+                    "Zo": false,
+                    "OQa": "E-prescribing is a standard feature in mobile EHRs."
+                }]
+            }, {
+                "gua": 0,
+                "question": "How does an EHR assist with quality reporting and public health surveillance?",
+                "hint": "Think about how the system can be used to collect and report data to outside agencies.",
+                "wA": [{
+                    "text": "By manually creating a report for each patient.",
+                    "Zo": false,
+                    "OQa": "Manual reporting would be very inefficient."
+                }, {
+                    "text": "By automating the collection and submission of data for reporting to agencies like CMS or the CDC.",
+                    "Zo": true,
+                    "OQa": "EHRs are designed to collect and aggregate data on patient care, which can be automatically submitted to regulatory and public health agencies for quality reporting and disease surveillance."
+                }, {
+                    "text": "By eliminating the need for public health surveillance.",
+                    "Zo": false,
+                    "OQa": "EHRs enhance, not eliminate, the need for public health surveillance."
+                }, {
+                    "text": "By sending a text message to all patients with a specific disease.",
+                    "Zo": false,
+                    "OQa": "Mass texting is not a function for public health surveillance."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is a 'data breach' and what are the steps a provider should take to handle one?",
+                "hint": "Think about a security incident where patient data is exposed.",
+                "wA": [{
+                    "text": "A data breach is when a patient loses their health insurance card.",
+                    "Zo": false,
+                    "OQa": "This is not a data breach."
+                }, {
+                    "text": "A data breach is a security incident where PHI is impermissibly disclosed. The provider must contain the breach, notify affected individuals, and report to regulatory agencies.",
+                    "Zo": true,
+                    "OQa": "A data breach is a serious security event. The correct steps involve a rapid response: containing the breach, notifying patients and regulatory bodies as required by law, and implementing measures to prevent future breaches."
+                }, {
+                    "text": "A data breach is when a patient requests their own medical records.",
+                    "Zo": false,
+                    "OQa": "A patient requesting their records is a legal right, not a data breach."
+                }, {
+                    "text": "A data breach is when a patient does not show up for an appointment.",
+                    "Zo": false,
+                    "OQa": "This is a 'no-show,' not a data breach."
+                }]
+            }, {
+                "gua": 0,
+                "question": "How do EHRs aid in the management of immunization records?",
+                "hint": "Think about how the EHR keeps track of a patient's vaccine history.",
+                "wA": [{
+                    "text": "By forcing a patient to get a flu shot.",
+                    "Zo": false,
+                    "OQa": "An EHR cannot force a patient to get a vaccine."
+                }, {
+                    "text": "By providing a centralized, up-to-date record of a patient's immunization history and generating reminders for future vaccines.",
+                    "Zo": true,
+                    "OQa": "EHRs provide a central place to record and track all of a patient's immunizations, ensuring that providers can easily access this information and identify when a patient is due for their next vaccine."
+                }, {
+                    "text": "By storing only the patient's most recent immunization.",
+                    "Zo": false,
+                    "OQa": "EHRs are designed to keep a complete history, not just the most recent."
+                }, {
+                    "text": "By automatically submitting a patient's immunization history to their insurance company.",
+                    "Zo": false,
+                    "OQa": "While EHRs can be linked to state immunization registries, they do not automatically submit records to insurance companies."
+                }]
+            }, {
+                "gua": 0,
+                "question": "How can EHRs be used to support clinical research?",
+                "hint": "Think about how a researcher can use the EHR to find information about a group of patients.",
+                "wA": [{
+                    "text": "By automatically enrolling all patients in a clinical trial.",
+                    "Zo": false,
+                    "OQa": "Patients must give informed consent to be enrolled in a clinical trial."
+                }, {
+                    "text": "By providing a centralized source of de-identified patient data that can be used to identify trends and patterns.",
+                    "Zo": true,
+                    "OQa": "EHRs provide a rich source of data that researchers can use to study disease patterns, treatment outcomes, and public health trends, all while protecting patient privacy through de-identification."
+                }, {
+                    "text": "By allowing a patient to participate in a clinical trial from home.",
+                    "Zo": false,
+                    "OQa": "Clinical research can be conducted from home, but the EHR's role is in data collection, not the location of the trial."
+                }, {
+                    "text": "By submitting all patient data to an external research company without a patient's consent.",
+                    "Zo": false,
+                    "OQa": "This would be a serious HIPAA violation."
+                }]
+            }, {
+                "gua": 0,
+                "question": "What is a 'query' or a 'data query' in an EHR?",
+                "hint": "Think about how you would search for a specific group of patients.",
+                "wA": [{
+                    "text": "A question that a patient asks a nurse during an appointment.",
+                    "Zo": false,
+                    "OQa": "This is a clinical question, not a data query."
+                }, {
+                    "text": "A request for information from the EHR's database, such as 'show me all patients with a specific diagnosis who are over 50 years old.'",
+                    "Zo": true,
+                    "OQa": "A data query is a request for a specific set of data from the EHR's database, used for reporting, research, and population health management."
+                }, {
+                    "text": "A patient's request to change their health insurance information.",
+                    "Zo": false,
+                    "OQa": "This is a patient administrative request."
+                }, {
+                    "text": "A system for a doctor to communicate with a pharmacist.",
+                    "Zo": false,
+                    "OQa": "A system for a doctor to communicate with a pharmacist is a messaging system."
+                }]
+            }, {
+                "gua": 0,
+                "question": "How does an EHR help improve documentation efficiency?",
+                "hint": "Think about how a doctor can save time when creating a note.",
+                "wA": [{
+                    "text": "By requiring all notes to be written by hand.",
+                    "Zo": false,
+                    "OQa": "EHRs are digital systems that aim to reduce the need for handwritten notes."
+                }, {
+                    "text": "By providing templates, pre-populated data, and speech-to-text functionality.",
+                    "Zo": true,
+                    "OQa": "EHRs offer a variety of tools like customizable templates, macros, and speech recognition to streamline the documentation process, allowing providers to chart more quickly and accurately."
+                }, {
+                    "text": "By limiting the number of notes a doctor can create in a day.",
+                    "Zo": false,
+                    "OQa": "EHRs are designed to increase efficiency, not limit it."
+                }, {
+                    "text": "By requiring a patient to document their own visit.",
+                    "Zo": false,
+                    "OQa": "While patients can document some information, the clinician is responsible for the clinical note."
+                }]
+            }]
+        };
+
         let allQuestions = quizData.Lk;
         let questions = [];
         let incorrectQuestions = [];
@@ -126,32 +1240,47 @@
             const allButtons = optionsContainer.querySelectorAll("button");
             allButtons.forEach(btn => {
                 btn.disabled = true;
-                const optionData = currentQuestion.wA.find(opt => opt.text === btn.textContent);
-                if (optionData.Zo) {
-                    btn.classList.remove("bg-gray-200", "hover:bg-gray-300");
-                    btn.classList.add("bg-green-500", "text-white");
-                } else if (btn === button) {
-                    btn.classList.remove("bg-gray-200", "hover:bg-gray-300");
-                    btn.classList.add("bg-red-500", "text-white");
+                if (btn !== button) {
+                    btn.classList.add("opacity-50");
                 }
             });
 
             if (selectedOption.Zo) {
                 score++;
                 feedbackElement.textContent = "Correct!";
+                feedbackElement.classList.remove("text-red-500");
                 feedbackElement.classList.add("text-green-600");
-                feedbackElement.classList.remove("text-red-600");
+                button.classList.remove("hover:bg-gray-300", "bg-gray-200");
+                button.classList.add("bg-green-500", "text-white");
             } else {
-                incorrectQuestions.push(currentQuestion);
-                feedbackElement.textContent = "Incorrect!";
-                feedbackElement.classList.add("text-red-600");
+                feedbackElement.textContent = "Incorrect.";
                 feedbackElement.classList.remove("text-green-600");
+                feedbackElement.classList.add("text-red-500");
+                rationaleElement.textContent = selectedOption.OQa;
+                button.classList.remove("hover:bg-gray-300", "bg-gray-200");
+                button.classList.add("bg-red-500", "text-white");
+                incorrectQuestions.push(currentQuestion);
+
+                // Highlight the correct answer
+                const correctAnswer = currentQuestion.wA.find(option => option.Zo);
+                const correctButton = Array.from(allButtons).find(btn => btn.textContent === correctAnswer.text);
+                if (correctButton) {
+                    correctButton.classList.remove("bg-gray-200");
+                    correctButton.classList.add("bg-green-500", "text-white");
+                }
             }
-            rationaleElement.textContent = selectedOption.OQa;
+
+            // Show rationale for all incorrect answers
+            const incorrectOptions = currentQuestion.wA.filter(option => !option.Zo);
+            incorrectOptions.forEach(option => {
+                const optionButton = Array.from(allButtons).find(btn => btn.textContent === option.text);
+                if (optionButton && !option.Zo) {
+                    optionButton.setAttribute("title", option.OQa);
+                }
+            });
 
             feedbackSection.classList.remove('scale-0', 'h-0');
             feedbackSection.classList.add('scale-100', 'h-auto');
-
             scoreElement.textContent = score;
             nextButton.disabled = false;
             nextButton.style.opacity = '1';
@@ -159,13 +1288,16 @@
 
         function showQuizEnd() {
             questionElement.textContent = "Quiz Complete!";
-            optionsContainer.innerHTML = `<p class="text-xl text-gray-700">You scored ${score} out of ${questions.length}.</p>`;
-            feedbackElement.textContent = "Great job!";
-            feedbackElement.classList.remove("text-green-600", "text-red-600");
-            rationaleElement.textContent = "";
-            feedbackSection.classList.remove('scale-0', 'h-0');
-            feedbackSection.classList.add('scale-100', 'h-auto');
-            nextButton.style.display = 'none';
+            optionsContainer.innerHTML = "";
+            feedbackSection.classList.remove('scale-100', 'h-auto');
+            feedbackSection.classList.add('scale-0', 'h-0');
+            nextButton.style.opacity = '0';
+            nextButton.disabled = true;
+
+            const finalScoreText = document.createElement("p");
+            finalScoreText.classList.add("text-2xl", "font-bold", "mt-4");
+            finalScoreText.textContent = `Your Final Score: ${score} / ${questions.length}`;
+            optionsContainer.appendChild(finalScoreText);
 
             if (incorrectQuestions.length > 0) {
                 studyIncorrectButton.classList.remove("hidden");
@@ -178,15 +1310,10 @@
         });
 
         studyIncorrectButton.addEventListener("click", () => {
-            if (incorrectQuestions.length > 0) {
-                startQuiz(incorrectQuestions);
-                nextButton.style.display = 'block';
-            }
+            startQuiz(incorrectQuestions);
         });
 
-        // Initialize quiz on window load
-        window.onload = () => startQuiz(allQuestions);
+        startQuiz(allQuestions);
     </script>
-
 </body>
 </html>
