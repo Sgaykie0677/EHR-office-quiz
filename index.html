@@ -23,6 +23,21 @@
             max-height: 500px; /* Arbitrarily large value to allow content to show */
             padding: 1rem;
         }
+        /* Fade in and out animation for message box */
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .fade-out {
+            animation: fadeOut 0.3s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.9); }
+        }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
@@ -59,7 +74,7 @@
         
         <!-- Message Box (Hidden by default) -->
         <div id="message-box" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden">
-            <div class="bg-white p-6 rounded-xl shadow-lg text-center transform scale-90 transition-transform duration-300">
+            <div class="bg-white p-6 rounded-xl shadow-lg text-center">
                 <p id="message-text" class="text-lg font-medium mb-4 text-gray-800"></p>
                 <button id="message-close-button" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors duration-300">
                     OK
@@ -148,7 +163,7 @@
 
             } catch (error) {
                 console.error("Error generating question:", error);
-                showMessage("Failed to load a new question. Please check your network connection and try again.");
+                showMessage("I'm sorry, I couldn't load a new question. This is likely due to a network connection or a security policy. Please try again or check your network.");
             } finally {
                 showLoading(false);
             }
@@ -167,20 +182,13 @@
         function showMessage(text) {
             messageText.textContent = text;
             messageBox.classList.remove('hidden');
-            messageBox.classList.add('flex');
-            // Animate message box in
-            setTimeout(() => {
-                messageBox.querySelector('div').classList.remove('scale-90');
-                messageBox.querySelector('div').classList.add('scale-100');
-            }, 10);
+            messageBox.classList.add('flex', 'fade-in');
         }
 
         function closeMessage() {
-            // Animate message box out
-            messageBox.querySelector('div').classList.remove('scale-100');
-            messageBox.querySelector('div').classList.add('scale-90');
+            messageBox.classList.add('fade-out');
             setTimeout(() => {
-                messageBox.classList.remove('flex');
+                messageBox.classList.remove('flex', 'fade-in', 'fade-out');
                 messageBox.classList.add('hidden');
             }, 300);
         }
