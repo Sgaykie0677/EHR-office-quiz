@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EHR Study Quiz</title>
+    <title>EHR & Medical Office Quiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
@@ -19,14 +19,9 @@
 </head>
 <body class="flex items-center justify-center p-4">
     <div class="container bg-white p-8 rounded-xl shadow-lg flex flex-col items-center">
-        <h1 id="quiz-title" class="text-3xl font-bold text-gray-800 mb-6 text-center">EHR Study Quiz</h1>
+        <h1 id="quiz-title" class="text-3xl font-bold text-gray-800 mb-6 text-center">EHR & Medical Office Quiz</h1>
         <div id="quiz-container" class="w-full">
-            <!-- Loading message, hidden by default -->
-            <div id="loading-message" class="text-center text-gray-500 font-medium hidden">
-                <p>Loading new questions...</p>
-            </div>
-
-            <div id="question-card" class="bg-blue-50 p-6 rounded-lg shadow-inner mb-6 hidden">
+            <div id="question-card" class="bg-blue-50 p-6 rounded-lg shadow-inner mb-6">
                 <p id="question-text" class="text-lg text-gray-700 font-medium mb-4">Question loading...</p>
                 <div id="options-container" class="space-y-3">
                     <!-- Options will be dynamically generated here -->
@@ -42,7 +37,84 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            let questions = [];
+            const questions = [
+                {
+                    question: "What does **EHR** stand for?",
+                    options: ["Electronic Health Record", "Essential Health Report", "Emergency Hospital Register", "Electronic Healthcare Resource"],
+                    answer: "Electronic Health Record"
+                },
+                {
+                    question: "Which of the following is NOT a core component of a patient's demographic information?",
+                    options: ["Full name", "Date of birth", "Social Security Number", "Medical history"],
+                    answer: "Medical history"
+                },
+                {
+                    question: "What is the primary purpose of **HIPAA**?",
+                    options: ["To regulate medical billing", "To protect patient health information", "To establish a national EHR system", "To manage hospital staffing"],
+                    answer: "To protect patient health information"
+                },
+                {
+                    question: "In the **SOAP** note format, what does the 'A' stand for?",
+                    options: ["Analysis", "Assessment", "Action", "Authorization"],
+                    answer: "Assessment"
+                },
+                {
+                    question: "What type of scheduling involves giving patients a specific appointment time, such as '10:15 AM'?",
+                    options: ["Open hours scheduling", "Wave scheduling", "Double-booking", "Stream scheduling"],
+                    answer: "Stream scheduling"
+                },
+                {
+                    question: "The **ICD-10-CM** coding system is primarily used for what purpose?",
+                    options: ["Reporting medical procedures", "Billing for services rendered", "Classifying and documenting diagnoses", "Tracking patient medications"],
+                    answer: "Classifying and documenting diagnoses"
+                },
+                {
+                    question: "Which of these is a **legal and ethical responsibility** of a medical assistant regarding patient records?",
+                    options: ["Sharing patient information with family members without consent", "Altering a patient's chart to hide a mistake", "Ensuring the confidentiality of all patient data", "Discarding paper records in a regular trash can"],
+                    answer: "Ensuring the confidentiality of all patient data"
+                },
+                {
+                    question: "What is a **co-payment**?",
+                    options: ["The full amount a patient pays for a procedure", "The annual fee for an insurance plan", "A fixed amount paid by the patient for a covered service", "The percentage of the cost the patient is responsible for"],
+                    answer: "A fixed amount paid by the patient for a covered service"
+                },
+                {
+                    question: "When a patient's insurance requires approval for a service before it is provided, this is called:",
+                    options: ["A deductible", "A co-payment", "Prior authorization", "An adjustment"],
+                    answer: "Prior authorization"
+                },
+                {
+                    question: "What is **informed consent**?",
+                    options: ["Permission to access a patient's EHR", "A patient's agreement to a treatment after understanding all risks and benefits", "The physician's approval of a patient's request", "A legal document that protects the doctor from lawsuits"],
+                    answer: "A patient's agreement to a treatment after understanding all risks and benefits"
+                },
+                {
+                    question: "In an EHR, a **template** is most often used for:",
+                    options: ["Customizing the system's color scheme", "Creating pre-formatted notes for common visit types", "Sending mass emails to all patients", "Billing and coding audits"],
+                    answer: "Creating pre-formatted notes for common visit types"
+                },
+                {
+                    question: "Which office task involves verifying a patient's insurance coverage and eligibility before their visit?",
+                    options: ["Charge capture", "Patient registration", "Fee schedule review", "Insurance verification"],
+                    answer: "Insurance verification"
+                },
+                {
+                    question: "What is the **CMS-1500** form used for?",
+                    options: ["To document a patient's medical history", "To file claims with Medicare and other health insurers", "To obtain patient consent for treatment", "To create a schedule of appointments"],
+                    answer: "To file claims with Medicare and other health insurers"
+                },
+                {
+                    question: "What is a **deductible** in health insurance?",
+                    options: ["The fixed amount a patient pays per visit", "The annual amount a patient must pay out-of-pocket before insurance starts paying", "The total amount the insurance company pays for a claim", "The monthly premium for the policy"],
+                    answer: "The annual amount a patient must pay out-of-pocket before insurance starts paying"
+                },
+                {
+                    question: "Which term describes the process of transferring a patient from one provider or department to another?",
+                    options: ["A referral", "A consult", "A triage", "An intake"],
+                    answer: "A referral"
+                }
+            ];
+
             let currentQuestionIndex = 0;
             let score = 0;
 
@@ -54,9 +126,7 @@
             const scoreText = document.getElementById('score-text');
             const restartButton = document.getElementById('restart-button');
             const messageBox = document.getElementById('message-box');
-            const loadingMessage = document.getElementById('loading-message');
 
-            // Simple function to shuffle an array
             function shuffleArray(array) {
                 for (let i = array.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -65,7 +135,6 @@
                 return array;
             }
 
-            // Function to show a temporary message
             function showMessage(text, isCorrect) {
                 messageBox.textContent = text;
                 messageBox.classList.remove('hidden', 'bg-red-200', 'text-red-800', 'bg-green-200', 'text-green-800');
@@ -76,27 +145,25 @@
                 }
                 setTimeout(() => {
                     messageBox.classList.add('hidden');
-                }, 1500); // Hide after 1.5 seconds
+                }, 1500);
             }
 
-            // Function to load the current question
             function loadQuestion() {
                 const q = questions[currentQuestionIndex];
-                // Decode HTML entities (e.g., &quot;) from the API response
-                const parser = new DOMParser();
-                questionText.textContent = parser.parseFromString(`<!doctype html><body>${q.question}`, 'text/html').body.textContent;
-                optionsContainer.innerHTML = ''; // Clear previous options
+                questionText.innerHTML = q.question;
+                optionsContainer.innerHTML = '';
 
-                q.options.forEach(option => {
+                const shuffledOptions = shuffleArray([...q.options]);
+
+                shuffledOptions.forEach(option => {
                     const button = document.createElement('button');
-                    button.textContent = parser.parseFromString(`<!doctype html><body>${option}`, 'text/html').body.textContent;
+                    button.textContent = option;
                     button.classList.add('w-full', 'px-4', 'py-3', 'text-left', 'bg-gray-100', 'text-gray-800', 'rounded-lg', 'font-medium', 'hover:bg-gray-200', 'transition-colors', 'shadow-sm');
                     button.onclick = () => checkAnswer(option, q.answer);
                     optionsContainer.appendChild(button);
                 });
             }
 
-            // Function to check the user's answer
             function checkAnswer(selectedOption, correctAnswer) {
                 if (selectedOption === correctAnswer) {
                     score++;
@@ -113,52 +180,23 @@
                 }
             }
 
-            // Function to show final quiz results
             function showResults() {
                 questionCard.classList.add('hidden');
                 resultsContainer.classList.remove('hidden');
                 scoreText.textContent = `You scored ${score} out of ${questions.length}!`;
             }
 
-            // Function to start or restart the quiz by fetching new questions
-            async function fetchQuestions() {
-                // Show a loading message and hide the question card
-                questionCard.classList.add('hidden');
-                resultsContainer.classList.add('hidden');
-                loadingMessage.classList.remove('hidden');
-
+            function startQuiz() {
                 currentQuestionIndex = 0;
                 score = 0;
-
-                try {
-                    // Fetch 10 random general knowledge questions
-                    const response = await fetch('https://opentdb.com/api.php?amount=10&type=multiple');
-                    const data = await response.json();
-
-                    if (data.response_code === 0) {
-                        questions = data.results.map(item => {
-                            // Combine correct and incorrect answers and shuffle them
-                            const options = shuffleArray([...item.incorrect_answers, item.correct_answer]);
-                            return {
-                                question: item.question,
-                                options: options,
-                                answer: item.correct_answer
-                            };
-                        });
-                        loadingMessage.classList.add('hidden');
-                        questionCard.classList.remove('hidden');
-                        loadQuestion();
-                    } else {
-                        throw new Error('API returned an error code.');
-                    }
-                } catch (error) {
-                    loadingMessage.textContent = 'Failed to load questions. Please try again later.';
-                    console.error('Error fetching quiz data:', error);
-                }
+                resultsContainer.classList.add('hidden');
+                questionCard.classList.remove('hidden');
+                shuffleArray(questions); // Shuffle questions for a new experience each time
+                loadQuestion();
             }
 
-            restartButton.addEventListener('click', fetchQuestions);
-            fetchQuestions(); // Initial load of questions
+            restartButton.addEventListener('click', startQuiz);
+            startQuiz();
         });
     </script>
 </body>
