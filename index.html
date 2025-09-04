@@ -3,246 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EHR Quiz with Rationale</title>
+    <title>EHR Study Quiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
         }
-        .rationale {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            padding: 0 1rem;
-        }
-        .rationale.show {
-            max-height: 500px; /* Arbitrarily large value to allow content to show */
-            padding: 1rem;
-        }
-        /* Fade in and out animation for message box */
-        .fade-in {
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-        .fade-out {
-            animation: fadeOut 0.3s ease-in forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes fadeOut {
-            from { opacity: 1; transform: scale(1); }
-            to { opacity: 0; transform: scale(0.9); }
+        .container {
+            max-width: 600px;
+            min-height: 80vh;
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
-
-    <!-- Main Quiz Container -->
-    <div id="quiz-container" class="bg-white p-8 md:p-12 rounded-2xl shadow-xl w-full max-w-2xl transform transition-all duration-300 scale-100">
-
-        <!-- Question Section -->
-        <div id="quiz-question-section" class="flex flex-col items-center text-center transition-opacity duration-300 opacity-100">
-            <div id="score-display" class="mb-4 text-lg font-semibold text-gray-700">
-                Score: <span id="current-score">0</span>
+<body class="flex items-center justify-center p-4">
+    <div class="container bg-white p-8 rounded-xl shadow-lg flex flex-col items-center">
+        <h1 id="quiz-title" class="text-3xl font-bold text-gray-800 mb-6 text-center">EHR Study Quiz</h1>
+        <div id="quiz-container" class="w-full">
+            <div id="question-card" class="bg-blue-50 p-6 rounded-lg shadow-inner mb-6">
+                <p id="question-text" class="text-lg text-gray-700 font-medium mb-4">Question loading...</p>
+                <div id="options-container" class="space-y-3">
+                    <!-- Options will be dynamically generated here -->
+                </div>
             </div>
-            <h2 id="question-text" class="text-xl md:text-2xl font-bold mb-6 text-gray-800"></h2>
-            <div id="choices-container" class="grid gap-4 w-full"></div>
-        </div>
-        
-        <!-- Loading Spinner -->
-        <div id="loading-spinner" class="flex flex-col items-center justify-center py-8 hidden">
-            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mb-4"></div>
-            <p id="loading-message" class="text-sm text-gray-500">Generating question...</p>
-        </div>
-
-        <!-- Rationale Section -->
-        <div id="rationale-section" class="rationale bg-gray-100 rounded-lg mt-6">
-            <p id="rationale-text" class="text-sm text-gray-700"></p>
-        </div>
-
-        <!-- Action Button -->
-        <div class="flex justify-center mt-8">
-            <button id="next-button" class="hidden bg-indigo-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-indigo-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                Next Question
-            </button>
-        </div>
-        
-        <!-- Message Box (Hidden by default) -->
-        <div id="message-box" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden">
-            <div class="bg-white p-6 rounded-xl shadow-lg text-center">
-                <p id="message-text" class="text-lg font-medium mb-4 text-gray-800"></p>
-                <button id="message-close-button" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors duration-300">
-                    OK
-                </button>
+            <div id="results-container" class="text-center hidden">
+                <p id="score-text" class="text-2xl font-semibold mb-4 text-gray-700">Quiz complete!</p>
+                <button id="restart-button" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-full shadow-md hover:bg-blue-700 transition-colors">Restart Quiz</button>
             </div>
+            <div id="message-box" class="mt-4 p-3 text-center text-sm font-medium rounded-lg hidden"></div>
         </div>
-
     </div>
 
     <script>
-        // --- DOM Elements ---
-        const quizContainer = document.getElementById('quiz-container');
-        const questionText = document.getElementById('question-text');
-        const choicesContainer = document.getElementById('choices-container');
-        const scoreDisplay = document.getElementById('current-score');
-        const quizQuestionSection = document.getElementById('quiz-question-section');
-        const loadingSpinner = document.getElementById('loading-spinner');
-        const loadingMessage = document.getElementById('loading-message');
-        const nextButton = document.getElementById('next-button');
-        const rationaleSection = document.getElementById('rationale-section');
-        const rationaleText = document.getElementById('rationale-text');
-        const messageBox = document.getElementById('message-box');
-        const messageText = document.getElementById('message-text');
-        const messageCloseButton = document.getElementById('message-close-button');
-
-        let score = 0;
-        let currentQuestion = null;
-
-        // --- API & State Management ---
-        const generateQuestion = async () => {
-            const systemPrompt = "You are a medical billing and coding expert. Generate a new multiple-choice quiz question about medical office topics. The question should have a correct answer and three incorrect options. The response must be in a specific JSON format: an array of a single object containing `question`, `choices` (an array of strings), `correctAnswer` (a string matching one of the choices), and `rationale` (a one-paragraph explanation of why the answer is correct and the others are not). Ensure the rationale is professional and educational.";
-            const userQuery = "Generate a new multiple-choice question on a topic like patient registration, medical coding, denial management, or HIPAA.";
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-                generationConfig: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: "ARRAY",
-                        items: {
-                            type: "OBJECT",
-                            properties: {
-                                "question": { "type": "STRING" },
-                                "choices": { "type": "ARRAY", "items": { "type": "STRING" } },
-                                "correctAnswer": { "type": "STRING" },
-                                "rationale": { "type": "STRING" }
-                            },
-                            "propertyOrdering": ["question", "choices", "correctAnswer", "rationale"]
-                        }
-                    }
+        document.addEventListener('DOMContentLoaded', () => {
+            const quizData = [
+                {
+                    question: "What does EHR stand for?",
+                    options: ["Electronic Health Record", "Emergency Health Response", "Endocrine Hormone Registry", "Environmental Hazard Report"],
+                    answer: "Electronic Health Record"
+                },
+                {
+                    question: "Which of these is a key benefit of using an EHR system?",
+                    options: ["Decreased data accuracy", "Improved patient care coordination", "Increased paperwork", "Slower access to patient data"],
+                    answer: "Improved patient care coordination"
+                },
+                {
+                    question: "What is the primary purpose of a patient portal in an EHR system?",
+                    options: ["For doctors to write notes", "To manage hospital staffing schedules", "To give patients secure access to their health information", "To process insurance claims"],
+                    answer: "To give patients secure access to their health information"
+                },
+                {
+                    question: "HIPAA is a U.S. law that protects what?",
+                    options: ["The right to vote", "Patient privacy and health information", "Food safety standards", "Intellectual property rights"],
+                    answer: "Patient privacy and health information"
                 }
-            };
+            ];
 
-            showLoading(true, "Generating question...");
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+            let currentQuestionIndex = 0;
+            let score = 0;
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const json = result.candidates[0].content.parts[0].text;
-                    const parsedJson = JSON.parse(json);
-                    
-                    if (parsedJson && parsedJson.length > 0) {
-                        currentQuestion = parsedJson[0];
-                        loadQuestion();
-                    } else {
-                        throw new Error("API response was empty or malformed.");
-                    }
+            const questionText = document.getElementById('question-text');
+            const optionsContainer = document.getElementById('options-container');
+            const resultsContainer = document.getElementById('results-container');
+            const scoreText = document.getElementById('score-text');
+            const restartButton = document.getElementById('restart-button');
+            const messageBox = document.getElementById('message-box');
+
+            function showMessage(text, isCorrect) {
+                messageBox.textContent = text;
+                messageBox.classList.remove('hidden', 'bg-red-200', 'text-red-800', 'bg-green-200', 'text-green-800');
+                if (isCorrect) {
+                    messageBox.classList.add('bg-green-200', 'text-green-800');
                 } else {
-                     throw new Error("Unexpected API response structure.");
+                    messageBox.classList.add('bg-red-200', 'text-red-800');
                 }
-
-            } catch (error) {
-                console.error("Error generating question:", error);
-                showMessage("I'm sorry, I couldn't load a new question. This is likely due to a network connection or a security policy. Please try again or check your network.");
-            } finally {
-                showLoading(false);
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 1500); // Hide after 1.5 seconds
             }
-        };
 
-        // --- UI Functions ---
-        function showLoading(show, message = "") {
-            loadingSpinner.classList.toggle('hidden', !show);
-            quizQuestionSection.classList.toggle('hidden', show);
-            nextButton.classList.add('hidden');
-            if (message) {
-                loadingMessage.textContent = message;
-            }
-        }
+            function loadQuestion() {
+                const q = quizData[currentQuestionIndex];
+                questionText.textContent = q.question;
+                optionsContainer.innerHTML = ''; // Clear previous options
 
-        function showMessage(text) {
-            messageText.textContent = text;
-            messageBox.classList.remove('hidden');
-            messageBox.classList.add('flex', 'fade-in');
-        }
-
-        function closeMessage() {
-            messageBox.classList.add('fade-out');
-            setTimeout(() => {
-                messageBox.classList.remove('flex', 'fade-in', 'fade-out');
-                messageBox.classList.add('hidden');
-            }, 300);
-        }
-
-        function loadQuestion() {
-            rationaleSection.classList.remove('show');
-            questionText.textContent = currentQuestion.question;
-            choicesContainer.innerHTML = '';
-            scoreDisplay.textContent = score;
-
-            currentQuestion.choices.forEach(choice => {
-                const button = document.createElement('button');
-                button.textContent = choice;
-                button.classList.add('choice-button', 'bg-gray-100', 'hover:bg-indigo-100', 'hover:border-indigo-500', 'text-gray-800', 'font-medium', 'py-3', 'px-4', 'rounded-xl', 'border-2', 'border-transparent', 'text-left', 'transition-all', 'duration-200');
-                button.onclick = () => selectAnswer(choice, button);
-                choicesContainer.appendChild(button);
-            });
-        }
-
-        function selectAnswer(selectedChoice, button) {
-            const isCorrect = selectedChoice === currentQuestion.correctAnswer;
-            
-            // Disable all buttons after selection
-            document.querySelectorAll('.choice-button').forEach(btn => btn.disabled = true);
-
-            if (isCorrect) {
-                score++;
-                scoreDisplay.textContent = score;
-                button.classList.remove('bg-gray-100', 'hover:bg-indigo-100');
-                button.classList.add('bg-green-100', 'border-green-500', 'scale-105');
-            } else {
-                button.classList.remove('bg-gray-100', 'hover:bg-indigo-100');
-                button.classList.add('bg-red-100', 'border-red-500', 'scale-105');
-                // Highlight the correct answer
-                document.querySelectorAll('.choice-button').forEach(btn => {
-                    if (btn.textContent === currentQuestion.correctAnswer) {
-                        btn.classList.add('bg-green-100', 'border-green-500', 'font-bold');
-                    }
+                q.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.classList.add('w-full', 'px-4', 'py-3', 'text-left', 'bg-gray-100', 'text-gray-800', 'rounded-lg', 'font-medium', 'hover:bg-gray-200', 'transition-colors', 'shadow-sm');
+                    button.onclick = () => checkAnswer(option, q.answer);
+                    optionsContainer.appendChild(button);
                 });
             }
-            
-            // Show rationale and Next button
-            rationaleText.textContent = currentQuestion.rationale;
-            rationaleSection.classList.add('show');
-            nextButton.classList.remove('hidden');
-        }
 
-        // --- Event Listeners ---
-        messageCloseButton.addEventListener('click', closeMessage);
-        nextButton.addEventListener('click', generateQuestion);
+            function checkAnswer(selectedOption, correctAnswer) {
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    showMessage("Correct!", true);
+                } else {
+                    showMessage(`Incorrect. The answer was: ${correctAnswer}`, false);
+                }
 
-        // Initial load
-        document.addEventListener('DOMContentLoaded', generateQuestion);
+                currentQuestionIndex++;
+                if (currentQuestionIndex < quizData.length) {
+                    // Wait for the message box to hide before loading the next question
+                    setTimeout(loadQuestion, 1600);
+                } else {
+                    showResults();
+                }
+            }
+
+            function showResults() {
+                document.getElementById('question-card').classList.add('hidden');
+                resultsContainer.classList.remove('hidden');
+                scoreText.textContent = `You scored ${score} out of ${quizData.length}!`;
+            }
+
+            function restartQuiz() {
+                currentQuestionIndex = 0;
+                score = 0;
+                document.getElementById('question-card').classList.remove('hidden');
+                resultsContainer.classList.add('hidden');
+                loadQuestion();
+            }
+
+            restartButton.addEventListener('click', restartQuiz);
+            loadQuestion(); // Initial load
+        });
     </script>
-
 </body>
 </html>
